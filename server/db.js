@@ -4,8 +4,9 @@ require('dotenv').config()
 const connectDB = async () => {
     try {
         const password = process.env.DB_PASSWORD
+        const username = process.env.USERNAME
 
-        await mongoose.connect(`mongodb+srv://pankajpawars123:${password}@cluster0.bljuba9.mongodb.net/`)
+        await mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.bljuba9.mongodb.net/`)
         console.log("Connected to MongoDB");
         
     } catch (error) {

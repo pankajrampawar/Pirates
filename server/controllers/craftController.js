@@ -1,7 +1,7 @@
 const { default: mongoose } = require('mongoose');
 const CraftModel = require('../models/CraftModel')
 
-exports.getAllCraft = async (req, res) => {
+exports.getAllCrafts = async (req, res) => {
     try {
         const crafts = await CraftModel.find({});
         
@@ -13,14 +13,17 @@ exports.getAllCraft = async (req, res) => {
 
 exports.addCraft = async (req, res) => {
     try {
-        const craftToAdd = req.body;
+
+        const { craftToAdd } = req.body;
 
         if (!craftToAdd) {
             res.status(400).json({ messasge: "craft is required" });
             return;
         }
 
-        const newCraft = new CraftModel( {craftToAdd} )
+        const newCraft = new CraftModel({
+            content: craftToAdd 
+        })
         
         await newCraft.save();
 
