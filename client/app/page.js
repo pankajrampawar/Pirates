@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="h-full w-full bg-black text-white flex justify-center items-center">
+    <main className="h-full w-full bg-black text-white flex justify-center items-center flex-col">
       <header>
         NEXUS
       </header>
@@ -16,7 +16,7 @@ export default function Home() {
           <p>
             enter at your own risk
           </p>
-        </article>
+        </article>   
       </section>
 
       <section>
