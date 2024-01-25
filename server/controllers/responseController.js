@@ -1,9 +1,12 @@
 const ResponseModel = require('../models/Responses');
 const CraftModel = require('../models/CraftModel');
 
-exports.getAllResponses = async (req, res) => {
+exports.getAllResponsesForCraft = async (req, res) => {
     try {
-        const responses = await ResponseModel.find({})
+        const { craftId } = req.query;
+        const responses = await ResponseModel.find({
+            replyOf: craftId
+        })
 
         res.status(200).json({ message: "responses sent!", responses });
     } catch (error) {
@@ -26,7 +29,10 @@ exports.addResponse = async (req, res) => {
             return;
         };
 
-        const responseToAdd = new ResponseModel(response);
+        const responseToAdd = new ResponseModel({ 
+            replyOf: craftId,
+            content: response
+        });
         
         const newResponse = await responseToAdd.save();
 
