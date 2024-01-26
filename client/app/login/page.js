@@ -21,7 +21,7 @@ export default function Login() {
                 />
                 <input
                     placeholder='username'
-                    className={`bg-black ${happyMonkey.className} text-xl pl-5`}
+                    className={`bg-black ${happyMonkey.className} text-xl pl-5 focus:outline-none`}
                 />
             </section>
 
