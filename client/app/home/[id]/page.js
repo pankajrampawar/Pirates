@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import ReplyCard from '@/app/ui/replyCard';
-import MessageCard from '@/app/ui/messageCard';
+import MessageClickedCard from '@/app/ui/messageClickedCard';
 import { useParams } from 'next/navigation';
 import { getReplyForCraft } from '@/app/actions';
 import { getCraft } from '@/app/actions';
@@ -34,7 +34,7 @@ export default function ReplySection() {
     return (
         <div className='flex flex-col gap-4'>
             <div>
-                <MessageCard
+                <MessageClickedCard
                     content = {craft.content}
                 />
             </div>
