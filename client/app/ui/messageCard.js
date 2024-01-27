@@ -2,64 +2,68 @@
 
 import React from 'react'
 import { happyMonkey } from '../fonts'
+import Link from 'next/link'
 
-export default function MessageCard() {
+export default function MessageCard(props) {
     return (
+        
         <main className='flex flex-col text-lg bg-surface py-3 gap-3 px-4 my-2'>
-            <section className='flex flex-col'>
-                    <div className='flex justify-between'>
-                        <div className={`${happyMonkey.className} text-xl`}>
-                            Anonymous
+            <Link href={`/home/${props.id}`}>
+                <section className='flex flex-col'>
+                        <div className='flex justify-between'>
+                            <div className={`${happyMonkey.className} text-xl`}>
+                                Anonymous
+                            </div>
+                            <div>
+                                symb
+                            </div>
                         </div>
-                        <div>
-                            symb
+                        <div className='text-gray-400 text-xs'>
+                            College, year
                         </div>
-                    </div>
-                    <div className='text-gray-400 text-xs'>
-                        College, year
-                    </div>
-            </section>
+                </section>
 
-            <section className='text-[18px] pb-4 pt-3 border-b border-gray-500'>
-                <p className='ml-4'>
-                    this is where the text will stay and this how to text here will look this is the best possible way to write the website.
-                </p>
-            </section>
-            
-            <section className='flex justify-between items-center'>
-                <div>
-                    <input
-                        placeholder='Your Response'
-                        className='bg-secondary px-2 py-2 text-sm rounded-xl max-w-[170px] placeholder:text-white '
-                    />
-                </div>
-                <div className='flex gap-2 text-xl'>
-                    <div className='flex gap-1 justify-center items-center'>
-                        <span>
-                            🫦
-                        </span>
-                        <span className='text-sm'>
-                            40
-                        </span>
+                <section className='text-[18px] pb-4 pt-3 border-b border-gray-500'>
+                    <p className='ml-4'>
+                        {props.content}
+                    </p>
+                </section>
+
+                <section className='flex justify-between items-center pt-2'>
+                    <div>
+                        <input
+                            placeholder='Your Response'
+                            className='bg-secondary px-2 py-2 text-sm rounded-xl max-w-[170px] placeholder:text-white '
+                        />
                     </div>
+                    <div className='flex gap-2 text-xl'>
                     <div className='flex gap-1 justify-center items-center'>
-                        <span>
-                            💀 
-                        </span>
-                        <span className='text-sm'>
-                            60
-                        </span>
+                            <span>
+                                🫦
+                            </span>
+                            <span className='text-sm'>
+                                40
+                            </span>
+                        </div>
+                        <div className='flex gap-1 justify-center items-center'>
+                            <span>
+                                💀 
+                            </span>
+                            <span className='text-sm'>
+                                60
+                            </span>
+                        </div>
+                        <div className='flex gap-1 justify-center items-center'>
+                            <span>
+                                🔥
+                            </span>
+                            <span className='text-sm'>
+                                30
+                            </span>
+                        </div>
                     </div>
-                    <div className='flex gap-1 justify-center items-center'>
-                        <span>
-                            🔥
-                        </span>
-                        <span className='text-sm'>
-                            30
-                        </span>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </Link>
         </main>
     )
 }

@@ -1,15 +1,33 @@
 'use client'
 
+import React, { useState, useEffect } from 'react'
 import MessageCard from "../ui/messageCard"
-
+import { getCrafts } from '../actions';
 export default function Home() {
+
+    const [crafts, setCrafts] = useState(['']);
+
+    useEffect(()=>{
+        const getAllCraft = async() => {
+            const messages = await getCrafts();
+            setCrafts(messages);
+        }
+        getAllCraft();
+    }, []);
+
     return (
         <div className="text-white">
             <div>
-                <MessageCard/>
-                <MessageCard/>
-                <MessageCard/>
-                <MessageCard/>
+                { crafts &&
+                    crafts.map((craft) => {
+                        return(
+                            <MessageCard
+                                content={craft.content}
+                                id={craft._id}
+                            />
+                        )
+                    })
+                }
             </div>
         </div>
     )
