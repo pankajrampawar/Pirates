@@ -14,7 +14,7 @@ export default function Home() {
          <p>
           This website was directly crafted by GODS*, it is a doorway to 
           <span> </span> 
-          <span className="underline underline-offset-8 decoration-red-600">unfiltered Community</span>
+          <span className="underline underline-offset-8 decoration-red-500">unfiltered Community</span>
          </p>
           <p>
             Enter at your own risk...

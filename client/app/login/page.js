@@ -3,6 +3,7 @@
 import React from 'react';
 import { keaniaOne, happyMonkey } from '../fonts';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Login() {
     return (
@@ -26,18 +27,20 @@ export default function Login() {
             </section>
 
             <section className='flex justify-center'>
-                <button
-                     className={`${happyMonkey.className} bg-white text-black text-3xl flex flex-col justify-center items-center h-[90px] w-[120px] rounded-[50px]`}
-                >
-                    <Image 
-                        src="./next.svg"
-                        alt='next'
-                        height={40}
-                        width={40}
-                        className='-mb-2'
-                    />
-                    <p>Next</p>
-                </button>
+                <Link href="/home">
+                    <button
+                         className={`${happyMonkey.className} bg-white text-black text-3xl flex flex-col justify-center items-center h-[90px] w-[120px] rounded-[50px]`}
+                    >
+                        <Image 
+                            src="./next.svg"
+                            alt='next'
+                            height={40}
+                            width={40}
+                            className='-mb-2'
+                        />
+                        <p>Next</p>
+                    </button>
+                </Link>
             </section>
         </div>
     )

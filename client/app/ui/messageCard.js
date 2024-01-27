@@ -34,19 +34,30 @@ export default function MessageCard() {
                     />
                 </div>
                 <div className='flex gap-2 text-xl'>
-                    <span>
-                        🤯
-                    </span>
-                    <span>
-                        🫦
-                    </span>
-                    <span>
-                        💀  
-                    </span>
-                    <span>
-                        🔥
-                    </span>
-                    
+                    <div className='flex gap-1 justify-center items-center'>
+                        <span>
+                            🫦
+                        </span>
+                        <span className='text-sm'>
+                            40
+                        </span>
+                    </div>
+                    <div className='flex gap-1 justify-center items-center'>
+                        <span>
+                            💀 
+                        </span>
+                        <span className='text-sm'>
+                            60
+                        </span>
+                    </div>
+                    <div className='flex gap-1 justify-center items-center'>
+                        <span>
+                            🔥
+                        </span>
+                        <span className='text-sm'>
+                            30
+                        </span>
+                    </div>
                 </div>
             </section>
         </main>
