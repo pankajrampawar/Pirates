@@ -11,6 +11,23 @@ exports.getAllCrafts = async (req, res) => {
     }
 }
 
+exports.getCraft = async (req, res) => {
+    try {
+        const { craftId } = req.query;
+
+        if (!craftId) {
+            res.status(400).json({ message: "craft id not found" });
+            return;
+        }
+
+        const craft = await CraftModel.findById(craftId);
+
+        res.status(200).json({ message: "craft found successfully", craft });
+    } catch(error) {
+        res.status(500).json({ message: "unable to get the the Craft, please try again later. (controller error)", error });
+    }
+}
+
 exports.addCraft = async (req, res) => {
     try {
 
