@@ -25,7 +25,7 @@ export default function RootLayout({children}) {
 
     return (
         <div className="">
-            <nav className={`fixed bg-black w-full top-0 left-0 ${visible ? 'opacity-100' : 'opacity-0'}`}>
+            <nav className={`fixed bg-black w-full transition-all duration-500 top-0 left-0 ${visible ? 'opacity-100' : 'opacity-0 -translate-y-20'}`}>
                 <Navbar/>
             </nav>
 
