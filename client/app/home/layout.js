@@ -1,6 +1,7 @@
 'use client'
 
 import Navbar from "../ui/navBar"
+import BottomBar from "../ui/bottomBar";
 import { useState, useEffect } from 'react'
 
 export default function RootLayout({children}) {
@@ -25,12 +26,16 @@ export default function RootLayout({children}) {
 
     return (
         <div className="">
-            <nav className={`fixed bg-black w-full transition-all duration-500 top-0 left-0 ${visible ? 'opacity-100' : 'opacity-0 -translate-y-20'}`}>
+            <nav className={`fixed bg-black w-full transition-all duration-500 top-0 left-0 ${visible ? 'opacity-100' : 'opacity-0 -translate-y-12'}`}>
                 <Navbar/>
             </nav>
 
             <div className="pt-12">
                 {children}
+            </div>
+
+            <div className={`fixed bg-black w-full transition-all duration-500 bottom-0 left-0 ${ visible ? 'opacity-100' : 'opacity-0 translate-y-8' }`}>
+                <BottomBar/>
             </div>
         </div>
     )
