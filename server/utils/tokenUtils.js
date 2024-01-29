@@ -9,7 +9,18 @@ function generateRefreshToken(user) {
     return jwt.sign({ userId: user._id }, process.env.REFRESH_TOKEN_SECRET);
 }
 
+function verifyToken(token, secret) {
+    try {
+        const decoded = jwt.verify(token, secret);
+        
+        return decoded;
+    } catch (error) {
+        throw new Error('token verification failded');
+    }
+}
+
 module.exports = {
     generateAccessToken,
-    generateRefreshToken
+    generateRefreshToken,
+    verifyToken
 };
