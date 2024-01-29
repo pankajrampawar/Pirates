@@ -5,12 +5,16 @@ const userRoute = require('./routes/UserRoutes');
 const craftRoute = require('./routes/CraftRoutes');
 const responseRoute = require('./routes/ResponseRoutes');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser')
 const port = process.env.PORT ||  8080;
 
 const app = express();
+
 app.use(cors()); 
 
 app.use(bodyParser.json())
+
+app.use(cookieParser())
 
 app.get('/', (req, res) => {
     res.send("started")
