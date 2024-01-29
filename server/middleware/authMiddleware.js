@@ -3,9 +3,7 @@ require('dotenv').config();
 
 const authMiddleware = async (req, res, next) => {
     try {
-        console.log("entering auth middleware")
         const accessToken = req.cookies.accessToken;
-        console.log(accessToken);
 
         if (!accessToken) {
             return res.status(404).json({ message: "access token not found" });
