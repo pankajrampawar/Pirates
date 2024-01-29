@@ -3,6 +3,7 @@
 import Navbar from "../ui/navBar"
 import BottomBar from "../ui/bottomBar";
 import { useState, useEffect } from 'react'
+import AddButton from "../ui/addButton";
 
 export default function RootLayout({children}) {
 
@@ -36,6 +37,10 @@ export default function RootLayout({children}) {
 
             <div className={`fixed bg-black w-full transition-all duration-500 bottom-0 left-0 ${ visible ? 'opacity-100' : 'opacity-0 translate-y-8' }`}>
                 <BottomBar/>
+            </div>
+
+            <div className={`fixed bottom-20 right-2 transition-all duration-500 ${visible ? 'opacity-100' : 'opacity-0 translate-x-14'}`}>
+                <AddButton/>
             </div>
         </div>
     )
