@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt')
 const UserModel = require('../models/UserModel');
+const { generateAccessToken, generateRefreshToken } = require('../utils/tokenUtils');
 
 exports.createNewUser = async (req, res) => {
     try {
@@ -48,6 +49,16 @@ exports.userLogin = async (req, res) => {
         if (!isPasswordValid) {
             return res.status(400).json({ message: "invalid password" });
         }
+
+        const accessToken = generateAccessToken(user);
+        const refreshToken = generateRefreshToken(user);
+
+        res.setHeader('Authorization', `Bearer ${accessToken}`);
+
+        res.cookie('refreshToken', refreshToken, {
+            httpOnly:  true,
+            secure: true
+        })
 
         return res.status(200).json({ message: "welcome back to Nexus"})
 
