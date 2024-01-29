@@ -25,6 +25,21 @@ exports.createNewUser = async (req, res) => {
 
         await newUser.save();
 
+        const accessToken = generateAccessToken(newUser);
+        const refreshToken = generateRefreshToken(newUser);
+
+        res.cookie('refreshToken', refreshToken, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'Strict'
+        });
+
+        res.cookie('accessToken', accessToken, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'Strict'
+        })
+
         return res.status(200).json({ message: `Welcome to new gen, ${username} enter the Nexus world...` });
 
     } catch(error) {
@@ -53,11 +68,16 @@ exports.userLogin = async (req, res) => {
         const accessToken = generateAccessToken(user);
         const refreshToken = generateRefreshToken(user);
 
-        res.setHeader('Authorization', `Bearer ${accessToken}`);
+        res.cookie('accessToken', accessToken, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'Strict'
+        })
 
         res.cookie('refreshToken', refreshToken, {
             httpOnly:  true,
-            secure: true
+            secure: true,
+            sameSite: 'Strict'
         })
 
         return res.status(200).json({ message: "welcome back to Nexus"})
