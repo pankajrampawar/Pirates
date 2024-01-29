@@ -1,6 +1,7 @@
 const express = require('express');
 const connectDB = require('./db')
 const cors = require('cors');
+const userRoute = require('./routes/UserRoutes');
 const craftRoute = require('./routes/CraftRoutes');
 const responseRoute = require('./routes/ResponseRoutes');
 const bodyParser = require('body-parser');
@@ -19,6 +20,7 @@ connectDB();
 
 app.use('/craft', craftRoute)
 app.use('/response', responseRoute)
+app.use('/user', userRoute)
 
 app.listen(port, ()=>{
     console.log(`Listening on port ${port}`);

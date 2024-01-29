@@ -1,4 +1,3 @@
-const { default: mongoose } = require('mongoose');
 const CraftModel = require('../models/CraftModel')
 
 exports.getAllCrafts = async (req, res) => {
