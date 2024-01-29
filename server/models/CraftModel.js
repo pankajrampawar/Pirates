@@ -9,7 +9,11 @@ const CraftSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'response'
     }],
-
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        expires: 20
+    }
 })
 
 const Craft = mongoose.model('Craft', CraftSchema);
