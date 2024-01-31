@@ -25,7 +25,7 @@ exports.createNewUser = async (req, res) => {
 
         await newUser.save();
 
-        const accessToken = generateAccessToken(newUser);
+        const accessToken = generateAccessToken(newUser._id);
         const refreshToken = generateRefreshToken(newUser);
 
         res.cookie('refreshToken', refreshToken, {
@@ -65,7 +65,7 @@ exports.userLogin = async (req, res) => {
             return res.status(400).json({ message: "invalid password" });
         }
 
-        const accessToken = generateAccessToken(user);
+        const accessToken = generateAccessToken(user._id);
         const refreshToken = generateRefreshToken(user);
 
         res.cookie('accessToken', accessToken, {
