@@ -1,34 +1,114 @@
 'use client'
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { keaniaOne, happyMonkey } from '../fonts';
 import Image from 'next/image';
-import Link from 'next/link';
+import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import { login } from '../actions';
 
 export default function Login() {
+
+    const router = useRouter();
+
+    const [userData, setUserData] = useState({
+        username: '',
+        password: '',
+    })
+
+    const handleChange = (e)=> {
+        const { id, value } = e.target
+        setUserData((prev) => ({
+            ...prev,
+            [id] : value
+        }))
+        console.log(userData)
+    }
+
+    console.log(userData)
+
+    const handleClick = async () => {
+        console.log("button clicked")
+        if (!userData.username || !userData.password) {
+            alert('username and password are required');
+            return;
+        } 
+
+        const status = await handleLogin();
+        
+        if (status === true) {
+            router.push('/home');
+        }
+        
+        if (!status) {
+            alert("icorrect credentials")
+        }
+
+        return;
+    }
+
+    const handleLogin = async () => {
+        try {
+            console.log("handling login")
+            const response = await login(userData.username, userData.password);
+            
+            return response;
+        } catch (error) {
+            console.log(error)
+            
+            throw new Error("unable to perform action, server error", error);
+        }
+    }
+
+
     return (
         <div className='h-full px-10 pb-20 flex flex-col py-20 text-center items-center justify-center gap-40'>
            <header className={`text-[33px] ${keaniaOne.className} tracking-wider`}>
               Nexus
             </header>
 
-            <section className='flex justify-center border-b border-gray-400 pb-2'>
-                <Image
-                    src="./user.svg"
-                    alt='user'
-                    width={29}
-                    height={29}
-                    className='invert'
-                />
-                <input
-                    placeholder='username'
-                    className={`bg-black ${happyMonkey.className} text-xl pl-5 focus:outline-none`}
-                />
-            </section>
+            <div className='flex flex-col gap-5'>
+                <section className='flex justify-center border-b border-gray-400 pb-1'>
+                    <Image
+                        src="./user.svg"
+                        alt='user'
+                        width={29}
+                        height={29}
+                        className='invert'
+                    />
+                    <input
+                        placeholder='username'
+                        type='text'
+                        id='username'
+                        value={userData.username}
+                        onChange={handleChange}
+                        className={`bg-black ${happyMonkey.className} text-xl pl-5 focus:outline-none`}
+                    />
+                </section>
+
+                <section className='flex justify-center border-b border-gray-400 pb-1'>
+                    <Image 
+                        src="./password.svg"
+                        alt='lock icon'
+                        width={26}
+                        height={29}
+                        className='invert'
+                    />
+                    <input
+                        placeholder='password'
+                        id='password'
+                        type="password"
+                        value={userData.password}
+                        onChange={handleChange}
+                        className={`bg-black ${happyMonkey.className} text-xl pl-5 focus:outline-none`}
+                    />
+                </section>
+            </div>
+
 
             <section className='flex justify-center'>
-                <Link href="/home">
                     <button
+                        onClick={handleClick}
                          className={`${happyMonkey.className} bg-white text-black text-3xl flex flex-col justify-center items-center h-[90px] w-[120px] rounded-[50px]`}
                     >
                         <Image 
@@ -40,7 +120,6 @@ export default function Login() {
                         />
                         <p>Next</p>
                     </button>
-                </Link>
             </section>
         </div>
     )
