@@ -1,11 +1,32 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { keaniaOne, happyMonkey } from '@/app/fonts'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function PageTwo() {
+
+    const [userData, setUserData] = useState({
+        college: '',
+        year: '', 
+        branch: '',
+        username: '',
+        password: '',
+    });
+
+    useEffect(()=>{
+        console.log(" in use effect ")
+    }, []);
+
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+        setUserData((prev)=>({
+            ...prev,
+            [id]: value
+        }))
+    }
+
     return (
         <div className='flex flex-col justify-center items-center gap-28 mt-20 px-10'>
             <header className={`text-[36px] ${keaniaOne.className} tracking-wider`}>
@@ -15,43 +36,36 @@ export default function PageTwo() {
             <section className='flex flex-col gap-14 w-full max-w-[350px]'>
                 <div className='flex gap-2 border-b border-gray-400 pb-2'>
                     <Image
-                        src="../year.svg"
+                        src="../user.svg"
                         alt='user'
                         height={29}
                         width={29}
                         className='invert' 
                     />
-                    <select
-                        className={`bg-black w-full focus:outline-none ${happyMonkey.className} tracking-widest text-xl `}
-                        placeholder="college"
-                    >
-                        <option value="" style={{color: '#718096'}} disabled selected>Select Year</option>
-                        <option value="1">1st</option>
-                        <option value="2">2nd</option>
-                        <option value="3">3rd</option>
-                        <option value="4">4th</option>
-                    </select>
+                    <input 
+                        placeholder='username'
+                        className={`bg-black focus:outline-none ${happyMonkey.className} text-xl`}
+                    />
                 </div>
-
+                
                 <div className='flex gap-2 border-b border-gray-400 pb-2'>
                     <Image
-                        src="../branch.svg"
-                        alt='college'
+                        src="../password.svg"
+                        alt='user'
                         height={29}
                         width={29}
-                        className='invert'
+                        className='invert' 
                     />
-                    <select
-                        className={`bg-black w-full focus:outline-none ${happyMonkey.className} tracking-widest text-xl `}
-                        placeholder="college"
-                    >
-                        <option value="" style={{color: '#718096'}} disabled selected>Select Branch</option>
-                        <option value="CMPN">CMPN</option>
-                        <option value="EXTC">EXTC</option>
-                        <option value="AIDS">AIDS</option>
-                        <option value="ECS">ECS</option>
-                    </select>
+                    <input 
+                        placeholder='password'
+                        id='password'
+                        type='password'
+                        value={userData.password}
+                        onChange={handleChange}
+                        className={`bg-black focus:outline-none ${happyMonkey.className} text-xl`}
+                    />
                 </div>
+                
             </section>
 
             <section className='flex justify-center'>
