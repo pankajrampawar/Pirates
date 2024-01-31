@@ -3,13 +3,15 @@
 import React, { useState, useEffect } from 'react'
 import { keaniaOne, happyMonkey } from '@/app/fonts'
 import Image from 'next/image'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function PageOne() {
 
+    const router = useRouter();
+
     const [userData, setUserData] = useState({
         college: '',
-        year: '',
+        year: null,
         branch: ''
     })
 
@@ -21,10 +23,17 @@ export default function PageOne() {
             [id]: value
         }));
     }
+    console.log(userData)
 
     const handleCLick = () => {
-        // check if all fields are selcted
-        // redirect to next page.
+        if (!userData.college && !userData.year && !userData.branch) {
+            alert("Fill the details lazy ass")
+            return;
+        }
+
+        localStorage.setItem('userData', JSON.stringify(userData));
+
+        router.push('/sinup/page2')
     }
 
     return (
@@ -45,7 +54,9 @@ export default function PageOne() {
                     />
                     <select
                         className={`bg-black w-full focus:outline-none ${happyMonkey.className} tracking-widest text-xl `}
-                        placeholder="college"
+                        id='college'
+                        value={userData.college}
+                        onChange={handleChange}
                     >
                         <option value="" style={{color: '#718096'}} disabled selected>College</option>
                         <option value="VESIT">VESIT</option>
@@ -64,13 +75,15 @@ export default function PageOne() {
                     />
                     <select
                         className={`bg-black w-full focus:outline-none ${happyMonkey.className} tracking-widest text-xl `}
-                        placeholder="college"
+                        id='year'
+                        value={userData.year}
+                        onChange={handleChange}
                     >
                         <option value="" style={{color: '#718096'}} disabled selected>Year</option>
-                        <option value="1">1st</option>
-                        <option value="2">2nd</option>
-                        <option value="3">3rd</option>
-                        <option value="4">4th</option>
+                        <option value={1}>1st</option>
+                        <option value={2}>2nd</option>
+                        <option value={3}>3rd</option>
+                        <option value={4}>4th</option>
                     </select>
                 </div>
 
@@ -84,7 +97,9 @@ export default function PageOne() {
                     />
                     <select
                         className={`bg-black w-full focus:outline-none ${happyMonkey.className} tracking-widest text-xl `}
-                        placeholder="college"
+                        id='branch'
+                        value={userData.branch}
+                        onChange={handleChange}
                     >
                         <option value="" style={{color: '#718096'}} disabled selected>Branch</option>
                         <option value="CMPN">CMPN</option>
@@ -98,6 +113,7 @@ export default function PageOne() {
             <section className='flex justify-center'>
                     <button
                          className={`${happyMonkey.className} bg-white text-black text-3xl flex flex-col justify-center items-center h-[90px] w-[120px] rounded-[50px]`}
+                         onClick={handleCLick}
                     >
                         <Image 
                             src="../next.svg"
