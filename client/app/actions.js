@@ -55,10 +55,12 @@ export const getCraft = async (id) => {
     try {
         const response = await axios.get('http://localhost:8080/craft/getCraft', 
             { 
-                params: { craftId: id } 
-            }
+                params: { craftId: id },
+                withCredentials: true,
+            }, 
         )
-
+        
+        console.log(response)
         return response.data.craft;
     } catch (error) {
         console.log("Error sending/ receiving the reply", error);
@@ -67,7 +69,12 @@ export const getCraft = async (id) => {
 
 export const getReplyForCraft = async (id) => {
     try {
-        const response = await axios.get('http://localhost:8080/response/getResponses', { params: { craftId: id } })
+        const response = await axios.get('http://localhost:8080/response/getResponses', 
+        { 
+            params: { craftId: id },
+            withCredentials: true,
+        }    
+        )
         
         return response.data.responses
     } catch (error) {
