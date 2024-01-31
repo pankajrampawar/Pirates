@@ -13,7 +13,8 @@ exports.getAllCrafts = async (req, res) => {
 exports.getCraft = async (req, res) => {
     try {
         const { craftId } = req.query;
-
+        console.log(craftId);
+        
         if (!craftId) {
             res.status(400).json({ message: "craft id not found" });
             return;
