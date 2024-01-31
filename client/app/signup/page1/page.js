@@ -1,11 +1,32 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { keaniaOne, happyMonkey } from '@/app/fonts'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function PageOne() {
+
+    const [userData, setUserData] = useState({
+        college: '',
+        year: '',
+        branch: ''
+    })
+
+    const handleChange = (e) => {
+        const { id, value } = e.target
+
+        setUserData((prev) => ({
+            ...prev, 
+            [id]: value
+        }));
+    }
+
+    const handleCLick = () => {
+        // check if all fields are selcted
+        // redirect to next page.
+    }
+
     return (
         <div className='flex flex-col justify-center items-center gap-28 mt-20 px-10'>
             <header className={`text-[36px] ${keaniaOne.className} tracking-wider`}>
@@ -75,7 +96,6 @@ export default function PageOne() {
             </section>
 
             <section className='flex justify-center'>
-                <Link href="page2">
                     <button
                          className={`${happyMonkey.className} bg-white text-black text-3xl flex flex-col justify-center items-center h-[90px] w-[120px] rounded-[50px]`}
                     >
@@ -88,7 +108,6 @@ export default function PageOne() {
                         />
                         <p>Next</p>
                     </button>
-                </Link>
             </section>
         </div>
     )

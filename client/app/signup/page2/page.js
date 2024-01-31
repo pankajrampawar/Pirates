@@ -44,6 +44,10 @@ export default function PageTwo() {
                     />
                     <input 
                         placeholder='username'
+                        type='text'
+                        id='username'
+                        value={userData.username}
+                        onChange={handleChange}
                         className={`bg-black focus:outline-none ${happyMonkey.className} text-xl`}
                     />
                 </div>
