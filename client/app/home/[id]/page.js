@@ -9,15 +9,14 @@ import { getCraft } from '@/app/actions';
 
 export default function ReplySection() {
 
-    const [replies, setReplies] = useState([]);
-    const [craft, setCraft] = useState({})
+    const [replies, setReplies] = useState([' ']);
+    const [craft, setCraft] = useState(' ')
     const params = useParams();
 
 
     useEffect(()=>{
         const getAllReplies = async () => {
             const repliesGot = await getReplyForCraft(params.id)
-            console.log(repliesGot)
             setReplies(repliesGot);    
         }
 
@@ -33,11 +32,12 @@ export default function ReplySection() {
 
     return (
         <div className='flex flex-col gap-4'>
-            <div>
+            { craft.content &&
+                <div>
                 <MessageClickedCard
                     content = {craft.content}
                 />
-            </div>
+            </div>}
             <div className='flex flex-col gap-3 pl-4'>
                 {
                     replies && 
