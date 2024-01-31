@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-function generateAccessToken(user) {
-    return jwt.sign({ userId: user._id}, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '30m' });
+function generateAccessToken(userId) {
+    return jwt.sign({ userId: userId}, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '30m' });
 }
 
 function generateRefreshToken(user) {
@@ -15,7 +15,8 @@ function verifyToken(token, secret) {
         
         return decoded;
     } catch (error) {
-        throw new Error('token verification failded');
+        console.log("token verification failded", error);
+        return null;
     }
 }
 
