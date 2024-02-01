@@ -33,7 +33,7 @@ export default function PageOne() {
 
         localStorage.setItem('userData', JSON.stringify(userData));
 
-        router.push('/sinup/page2')
+        router.push('/signup/page2')
     }
 
     return (

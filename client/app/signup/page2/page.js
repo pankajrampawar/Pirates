@@ -3,9 +3,12 @@
 import React, { useState, useEffect } from 'react'
 import { keaniaOne, happyMonkey } from '@/app/fonts'
 import Image from 'next/image'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { signup } from '@/app/actions'
 
 export default function PageTwo() {
+
+    const router = useRouter();
 
     const [userData, setUserData] = useState({
         college: '',
@@ -15,8 +18,20 @@ export default function PageTwo() {
         password: '',
     });
 
+    console.log(userData);
+
     useEffect(()=>{
-        console.log(" in use effect ")
+        const stringData = localStorage.getItem('userData');
+        
+        const data = JSON.parse(stringData);
+
+        setUserData((prev) => ({
+            ...prev,
+            college: data.college,
+            year: data.year,
+            branch: data.branch,
+        }))
+
     }, []);
 
     const handleChange = (e) => {
@@ -25,6 +40,18 @@ export default function PageTwo() {
             ...prev,
             [id]: value
         }))
+    }
+
+    const handleSingup = async ()=>{
+        if (!userData.username && !userData.password) {
+            alert("Come on bro! fill the details..");
+            
+            return;
+        }
+
+        const signupStatus = await signup(userData);
+        if (signupStatus) router.push('/home');
+        else alert('hmm! we are kinda busy, try again later..');
     }
 
     return (
@@ -73,8 +100,8 @@ export default function PageTwo() {
             </section>
 
             <section className='flex justify-center'>
-                <Link href="/home">
                     <button
+                    onClick={handleSingup}
                          className={`${happyMonkey.className} bg-white text-black text-3xl flex flex-col justify-center items-center h-[90px] w-[120px] rounded-[50px]`}
                     >
                         <Image 
@@ -86,7 +113,6 @@ export default function PageTwo() {
                         />
                         <p>Next</p>
                     </button>
-                </Link>
             </section>
         </div>
     )
