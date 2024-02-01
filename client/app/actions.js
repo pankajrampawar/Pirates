@@ -1,6 +1,35 @@
 import axios from 'axios'
 import Cookies from 'js-cookie';
 
+
+export const signup = async (user) => {
+    try {
+        const response = await axios.post('http://localhost:8080/user/signup', 
+            { user },
+            {
+                withCredentials: true,
+            }
+        )
+
+        if (response.headers['set-cookie']) {
+
+            const cookiesFromResponse = response.headers['set-cookie'];
+
+            cookiesFromResponse.forEach(cookie => {
+                const [cookieName, cookieValue] = cookie.split(';')[0].split('=');
+                Cookies.set(cookieName, cookieValue, { path: '/', secure: true, sameSite: 'Strict' });
+            });
+         }
+
+        if (response) return true
+
+    } catch (error) {
+        console.log("error in signup, please try again later!", error);
+
+        return false;
+    }
+}
+
 export const login = async (username, password) => {
     try {
         const user = {
