@@ -110,3 +110,20 @@ export const getReplyForCraft = async (id) => {
         console.log("Error sending/ receiving the reply", error);
     }
 }
+
+export const postADrop = async (drop) => {
+    try {
+        const response = await axios.post('http://localhost:8080/craft/addCraft', 
+            drop,
+            {
+                withCredentials: true
+            }
+        )
+
+        console.log(response);
+        return true
+    } catch (error) {
+        console.log("error sending / receiveing response", error)
+        return false
+    }
+}
