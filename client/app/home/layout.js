@@ -4,11 +4,16 @@ import Navbar from "../ui/navBar"
 import BottomBar from "../ui/bottomBar";
 import { useState, useEffect } from 'react'
 import AddButton from "../ui/addButton";
+import { useRouter } from "next/navigation";
+import PostDrop from "../ui/postAMessage";
 
 export default function RootLayout({children}) {
 
+    const router = useRouter();
+
     const [prevScrollPosition, setPrevScrollPosition] = useState(0);
     const [visible , setVisible] = useState(true);
+    const [postCardVisible, setPostCardVisible] = useState(false)
 
     useEffect(()=>{
         const handleScroll = () => {
@@ -23,10 +28,15 @@ export default function RootLayout({children}) {
         return () => {
             window.removeEventListener('scroll', handleScroll)
         }
-    }, [prevScrollPosition, visible])
+    }, [prevScrollPosition, visible]);
+
+    const togglePostCardVisible = () => {
+        setPostCardVisible((prev) => !prev)
+        console.log("toggle CLCIKED")
+    }
 
     return (
-        <div className="">
+        <div className={`${postCardVisible ? ' h-screen overflow-clip' : ''} `}>
             <nav className={`fixed bg-black w-full transition-all duration-500 top-0 left-0 ${visible ? 'opacity-100' : 'opacity-0 -translate-y-12'}`}>
                 <Navbar/>
             </nav>
@@ -39,8 +49,20 @@ export default function RootLayout({children}) {
                 <BottomBar/>
             </div>
 
-            <div className={`fixed bottom-20 right-2 transition-all duration-500 ${visible ? 'opacity-100' : 'opacity-0 translate-x-14'}`}>
+            <div 
+                onClick={togglePostCardVisible}
+                className={`fixed bottom-20 right-2 transition-all duration-500 ${visible ? 'opacity-100' : 'opacity-0 translate-x-14'}`}>
                 <AddButton/>
+            </div>
+
+            <div
+                className={` ${postCardVisible ? 'block' : 'hidden' } fixed top-0 h-full w-full backdrop-blur-sm transparentBlack z-30`}
+                onClick={togglePostCardVisible}
+            >
+            </div>
+
+            <div className={`${postCardVisible ? 'block' : 'hidden' } fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40`}>
+                <PostDrop togglePostCardVisible={togglePostCardVisible}/>
             </div>
         </div>
     )
