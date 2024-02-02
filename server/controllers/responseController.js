@@ -45,7 +45,6 @@ exports.addResponse = async (req, res) => {
         res.status(200).json({ message: "response added successfully", updatedCraft })
 
     } catch (error) {
-        console.log("error in add repsonse");
         
         res.status(500).json({ message: "Error adding the resposne, mongoose error", error });
     }
