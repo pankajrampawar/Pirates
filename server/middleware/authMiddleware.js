@@ -9,7 +9,6 @@ const authMiddleware = async (req, res, next) => {
         return res.status(401).json({ message: "unathorized" });
     }
 
-    console.log("decoding");
     const decoded = verifyToken(accessToken, process.env.ACCESS_TOKEN_SECRET);
 
     if (decoded) {
@@ -17,11 +16,11 @@ const authMiddleware = async (req, res, next) => {
         return next();
     }
 
-    console.log("access token invalid");
+
     const decodedRefreshToken = verifyToken(refreshToken, process.env.REFRESH_TOKEN_SECRET);
     
     if (!decodedRefreshToken) {
-        console.log("refresh token not found");
+
         return res.status(401).json({ message: "unauthorized, plz login in again."});
     }
 
