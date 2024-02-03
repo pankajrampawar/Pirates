@@ -14,11 +14,11 @@ export default function MessageCard(props) {
                                 Anonymous
                             </div>
                             <div>
-                                symb
+
                             </div>
                         </div>
                         <div className='text-gray-400 text-xs'>
-                            College, year
+                            2nd Year EXTC
                         </div>
                 </section>
 

@@ -12,11 +12,11 @@ export default function MessageClickedCard(props) {
                             Anonymous
                         </div>
                         <div>
-                            symb
+
                         </div>
                     </div>
                     <div className='text-gray-400 text-xs'>
-                        College, year
+
                     </div>
             </section>
 
@@ -30,30 +30,7 @@ export default function MessageClickedCard(props) {
         
         <section className='flex justify-center items-center pt-2'>
             <div className='flex gap-4 text-xl'>
-            <div className='flex gap-1 justify-center items-center'>
-                    <span>
-                        🫦
-                    </span>
-                    <span className='text-sm'>
-                        40
-                    </span>
-                </div>
-                <div className='flex gap-1 justify-center items-center'>
-                    <span>
-                        💀 
-                    </span>
-                    <span className='text-sm'>
-                        60
-                    </span>
-                </div>
-                <div className='flex gap-1 justify-center items-center'>
-                    <span>
-                        🔥
-                    </span>
-                    <span className='text-sm'>
-                        30
-                    </span>
-                </div>
+
             </div>
         </section>
     </main>
