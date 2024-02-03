@@ -127,3 +127,21 @@ export const postADrop = async (drop) => {
         return false
     }
 }
+
+export const addResponse = async (craftId, response) => {
+    try {
+        const resul = await axios.post('http://localhost:8080/response/addResponse', 
+            { craftId, response },
+            {
+                withCredentials: true
+            }
+        )
+
+        console.log(response);
+        
+        return true;
+    } catch (error) {
+        console.log("error sending response", error)
+        return false
+    }
+}
