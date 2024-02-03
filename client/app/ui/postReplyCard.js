@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react';
+import { addResponse } from '../actions';
 
 export default function ReplyComponent({ craftId }) {
 
@@ -16,8 +17,14 @@ export default function ReplyComponent({ craftId }) {
         });
     }
 
-    const handleClick = () => {
-        
+    const handleClick = async () => {
+        const sent = await addResponse(craftId, reply.response)
+
+        if (sent) {
+            alert('reply sent');
+        } else {
+            alert('reply not sent')
+        }
     }
 
     return (
