@@ -68,14 +68,14 @@ exports.userLogin = async (req, res) => {
 
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
-            sameSite: 'Strict',
+            sameSite: 'Lax',
             secure: false
         })
 
         res.cookie('refreshToken', refreshToken, {
             httpOnly:  true,
             sameSite: 'Lax',
-            secure: true
+            secure: false
         })
 
         return res.status(200).json({ message: "welcome back to Nexus"})
