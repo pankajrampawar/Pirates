@@ -74,7 +74,7 @@ exports.userLogin = async (req, res) => {
 
         res.cookie('refreshToken', refreshToken, {
             httpOnly:  true,
-            sameSite: 'None',
+            sameSite: 'Lax',
             secure: true
         })
 
