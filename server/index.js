@@ -11,7 +11,8 @@ const port = process.env.PORT ||  8080;
 const app = express();
 
 const corsOption = {
-    origin: 'http://localhost:3000',
+    origin: 'https://pirates-m8d5mviwn-pankajrampawar.vercel.app',
+
     credentials: true
 }
 app.use(cors(corsOption)); 
