@@ -57,7 +57,7 @@ export default function PostDrop(props) {
                 </div>
 
                 <p className={`absolute text-base -bottom-20 left-2 ${happyMonkey.className}`}>
-                    your drops are completely anonymous, even gods can't trace them..
+                    your drops are completely anonymous, even gods cant trace them..
                 </p>
         </div>
     )

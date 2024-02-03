@@ -13,16 +13,17 @@ export default function ReplySection() {
     const [replies, setReplies] = useState([' ']);
     const [craft, setCraft] = useState(' ')
     const params = useParams();
+    const craftId = params.id;
 
 
     useEffect(()=>{
         const getAllReplies = async () => {
-            const repliesGot = await getReplyForCraft(params.id)
+            const repliesGot = await getReplyForCraft(craftId)
             setReplies(repliesGot);    
         }
 
         const getCraftById = async () => {
-            const message = await getCraft(params.id)
+            const message = await getCraft(craftId)
             setCraft(message)
         }
 
@@ -50,6 +51,7 @@ export default function ReplySection() {
                     replies && 
                     replies.map((reply) => (
                         <ReplyCard 
+                            key= {reply._id}
                             id = {reply._id}
                             content = {reply.content}
                         />

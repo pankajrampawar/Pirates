@@ -22,6 +22,7 @@ export default function Home() {
                     crafts.map((craft) => {
                         return(
                             <MessageCard
+                                key={craft._id}
                                 content={craft.content}
                                 id={craft._id}
                             />
