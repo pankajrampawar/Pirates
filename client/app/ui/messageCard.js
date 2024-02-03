@@ -18,7 +18,7 @@ export default function MessageCard(props) {
                             </div>
                         </div>
                         <div className='text-gray-400 text-xs'>
-                            2nd Year EXTC
+
                         </div>
                 </section>
 
