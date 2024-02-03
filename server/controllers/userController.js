@@ -30,14 +30,10 @@ exports.createNewUser = async (req, res) => {
 
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
-            secure: true,
-            sameSite: 'Strict'
         });
 
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
-            secure: true,
-            sameSite: 'Strict'
         })
 
         return res.status(200).json({ message: `Welcome to new gen, ${username} enter the Nexus world...` });
@@ -70,14 +66,10 @@ exports.userLogin = async (req, res) => {
 
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
-            secure: true,
-            sameSite: 'Strict'
         })
 
         res.cookie('refreshToken', refreshToken, {
             httpOnly:  true,
-            secure: true,
-            sameSite: 'Strict'
         })
 
         return res.status(200).json({ message: "welcome back to Nexus"})

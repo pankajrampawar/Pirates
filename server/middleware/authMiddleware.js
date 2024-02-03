@@ -34,8 +34,6 @@ const authMiddleware = async (req, res, next) => {
 
     res.cookie('accessToken', newAccessToken, {
         httpOnly: true,
-        secure: true,
-        sameSite: 'Strict'
     });
 
     return next();
