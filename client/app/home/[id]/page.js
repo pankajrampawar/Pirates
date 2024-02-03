@@ -6,6 +6,7 @@ import MessageClickedCard from '@/app/ui/messageClickedCard';
 import { useParams } from 'next/navigation';
 import { getReplyForCraft } from '@/app/actions';
 import { getCraft } from '@/app/actions';
+import ReplyComponent from '@/app/ui/postReplyCard';
 
 export default function ReplySection() {
 
@@ -32,12 +33,17 @@ export default function ReplySection() {
 
     return (
         <div className='flex flex-col gap-4'>
-            { craft.content &&
+            {   craft.content && craft.content &&
                 <div>
                 <MessageClickedCard
                     content = {craft.content}
                 />
             </div>}
+
+            <div>
+                <ReplyComponent craftId={params.id}/> 
+            </div>
+
             <div className='flex flex-col gap-3 pl-4'>
                 {
                     replies && 
