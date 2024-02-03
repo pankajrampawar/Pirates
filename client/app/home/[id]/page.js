@@ -32,13 +32,14 @@ export default function ReplySection() {
     }, [])
 
     return (
-        <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-2'>
             {   craft.content && craft.content &&
                 <div>
                 <MessageClickedCard
                     content = {craft.content}
                 />
-            </div>}
+                </div>
+            }
 
             <div>
                 <ReplyComponent craftId={params.id}/> 

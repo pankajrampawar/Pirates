@@ -4,7 +4,7 @@ import { happyMonkey } from "../fonts"
 
 export default function MessageClickedCard(props) {
     return (
-        <main className='flex flex-col text-lg bg-surface py-3 gap-3 px-4 my-2'>
+        <main className='flex flex-col text-lg bg-surface py-3 gap-3 px-4 mt-2'>
         <Link href={`/home/${props.id}`}>
             <section className='flex flex-col'>
                     <div className='flex justify-between'>
