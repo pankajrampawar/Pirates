@@ -31,6 +31,7 @@ export default function PostDrop(props) {
 
         if (response) {
             alert('drop sent');
+            drop.craftToAdd = "";
             props.togglePostCardVisible();
         }
     }
