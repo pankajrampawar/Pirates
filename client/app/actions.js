@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 
 export const signup = async (user) => {
     try {
-        const response = await axios.post('http://localhost:8080/user/signup', 
+        const response = await axios.post('http://ec2-52-63-170-17.ap-southeast-2.compute.amazonaws.com:8080/user/signup', 
             { user },
             {
                 withCredentials: true,
@@ -17,9 +17,11 @@ export const signup = async (user) => {
 
             cookiesFromResponse.forEach(cookie => {
                 const [cookieName, cookieValue] = cookie.split(';')[0].split('=');
-                Cookies.set(cookieName, cookieValue, { path: '/', secure: true, sameSite: 'Strict' });
+                Cookies.set(cookieName, cookieValue, { path: '/', sameSite: 'None', secure: true });
             });
          }
+        
+        console.log(response);
 
         if (response) return true
 
@@ -37,10 +39,13 @@ export const login = async (username, password) => {
             password: password,
         }
 
-        const response = await axios.post("http://localhost:8080/user/login", 
+        const response = await axios.post("http://ec2-52-63-170-17.ap-southeast-2.compute.amazonaws.com:8080/user/login", 
             { user },
             {
                 withCredentials: true,
+                headers: {
+                    "Content-Type": "application/json",
+                },
             }
         );
        
@@ -51,7 +56,7 @@ export const login = async (username, password) => {
            // Set the cookies on the client side
            cookiesFromResponse.forEach(cookie => {
                const [cookieName, cookieValue] = cookie.split(';')[0].split('=');
-               Cookies.set(cookieName, cookieValue, { path: '/', secure: true, sameSite: 'Strict' });
+               Cookies.set(cookieName, cookieValue, { path: '/' , sameSite: 'None', secure: true });
            });
         }
 
@@ -68,7 +73,7 @@ export const login = async (username, password) => {
 export const getCrafts = async () => {
     try {
 
-        const response = await axios.get('http://localhost:8080/craft/getCrafts', {
+        const response = await axios.get('http://ec2-52-63-170-17.ap-southeast-2.compute.amazonaws.com:8080/craft/getCrafts', {
             withCredentials: true,
         });
         
