@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main className="h-full w-full bg-black text-white flex items-center flex-col gap-9 pt-20 px-7">
       <header className={`text-[36px] ${keaniaOne.className} tracking-wider`}>
-        Nexus
+        WhisperWave
       </header>
 
       <section className={`${happyMonkey.className} tracking-wider text-center text-[20px]`}>
