@@ -1,8 +1,9 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { happyMonkey } from '../fonts'
 import Link from 'next/link'
+import { addResponse } from '../actions'
 
 export default function MessageCard(props) {
 
@@ -11,6 +12,40 @@ export default function MessageCard(props) {
         const v = year % 100;
         return year + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
     };
+
+    cosnt [active, setActive] = useState(false);
+    const [response, setResponse] = useState('');
+
+
+    const handleChange = (e) => {
+        const { value } = e.target;
+
+        setResponse(value);
+
+        if(response) setActive(true);
+
+        if(!response) setActive(false);
+    }
+
+    const handleClick = async () => {
+
+        if (!response) {
+            alert("type something to reply, dumbass!");
+            return;
+        }
+
+        const result = await addResponse(props.id, response);
+        
+        if (result) {
+            alert("response sent");
+            return;
+        }
+
+        if (!result) {
+            alert("unable to spend reply, it's your net..");
+            return;
+        }
+    }
 
     return (
         <main className='flex flex-col text-lg bg-surface py-3 gap-3 px-4 my-2'>
@@ -45,9 +80,19 @@ export default function MessageCard(props) {
                     <input
                         placeholder='Your Response'
                         className='bg-secondary px-2 py-2 text-sm rounded-xl max-w-[120px] placeholder:text-white focus:outline-none'
+                        onChange={handleChange}
+                        value={response}
+                        id='response'
                     />
                 </div>
-                <div className='flex gap-3 text-xl'>
+
+                <button 
+                    className={`text-black p-2  ${active ? 'bg-white font-bold' : 'bg-gray-200 font-medium'}`}
+                    onClick={handleClick}
+                >
+                    send
+                </button>
+                {/* <div className='flex gap-3 text-xl'>
                 <div className='flex gap-1 justify-center items-center'>
                         <span>
                             🫦
@@ -72,7 +117,7 @@ export default function MessageCard(props) {
                             30
                         </span>
                     </div>
-                </div>
+                </div> */}
             </section>
         </main>
     )
