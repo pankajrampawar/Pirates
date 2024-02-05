@@ -33,7 +33,7 @@ exports.addCraft = async (req, res) => {
         const { craftToAdd, branch, year } = req.body;
 
         if (!craftToAdd) {
-            res.status(400).json({ messasge: "craft is required" });
+            res.status(400).json({ message: "craft is required" });
             return;
         }
 
