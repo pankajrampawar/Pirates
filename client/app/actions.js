@@ -164,9 +164,15 @@ export const checkAndGetUser = async () => {
             return { status:false }
         }
 
+        const userData = result.data || (result.response?.data && result.response.data);
+
+        if (!userData) {
+            return false
+        }
+
         console.log(result);
 
-        return { status: true, user: result.data.user };
+        return { status: true, user: userData.user };
     } catch (error) {
         console.log(error);
         
