@@ -135,14 +135,14 @@ export const postADrop = async (drop) => {
 
 export const addResponse = async (craftId, response) => {
     try {
-        const resul = await axios.post('https://whiseve.com/response/addResponse', 
+        const result = await axios.post('https://whiseve.com/response/addResponse', 
             { craftId, response },
             {
                 withCredentials: true
             }
         )
 
-        console.log(response);
+        console.log(result);
         
         return true;
     } catch (error) {
@@ -150,3 +150,26 @@ export const addResponse = async (craftId, response) => {
         return false
     }
 }
+
+
+export const checkAndGetUser = async () => {
+    try {
+        const result = await axios.get('https:/whiseve.com/user/checkStatus');
+        
+        if (!result) {
+            return false
+        }
+
+        console.log(result.data.message);
+
+        return { status: result.data.status, user: result.data.user };
+    } catch (error) {
+        console.log(error);
+        
+        return false
+    }
+}
+
+
+
+
