@@ -161,7 +161,7 @@ export const checkAndGetUser = async () => {
         );
         
         if (!result) {
-            return false
+            return { status:false }
         }
 
         console.log(result);
@@ -170,7 +170,7 @@ export const checkAndGetUser = async () => {
     } catch (error) {
         console.log(error);
         
-        return false
+        return { status: false }
     }
 }
 

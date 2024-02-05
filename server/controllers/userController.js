@@ -100,6 +100,6 @@ exports.checkStatus = async () => {
         return res.status(200).json({ message: 'user found', status: true, user: user });
     } catch (error) {
         console.log("Error in check status", error);
-        return res.status(500).josn({ message: "internal server error", status: false });
+        return res.status(500).json({ message: "internal server error", status: false });
     }
 }
