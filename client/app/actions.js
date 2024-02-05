@@ -118,6 +118,7 @@ export const getReplyForCraft = async (id) => {
 
 export const postADrop = async (drop) => {
     try {
+        console.log(drop)
         const response = await axios.post('https://whiseve.com/craft/addCraft', 
             drop,
             {

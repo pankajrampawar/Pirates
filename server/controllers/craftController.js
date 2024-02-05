@@ -31,6 +31,7 @@ exports.addCraft = async (req, res) => {
     try {
 
         const { craftToAdd, branch, year } = req.body;
+        console.log(req.body)
 
         if (!craftToAdd) {
             res.status(400).json({ message: "craft is required" });
