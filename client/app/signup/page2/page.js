@@ -10,6 +10,22 @@ export default function PageTwo() {
 
     const router = useRouter();
 
+    useEffect(() => {
+      const checkAndGetUserAction = async () => {
+        const response = await checkAndGetUser();
+        
+        if (response.status) {
+          router.push('/home')
+          localStorage.setItem('user', JSON.stringify(response.user))
+        }
+        
+        return
+      };
+    
+      checkAndGetUserAction();
+    
+    }, [])
+
     const [userData, setUserData] = useState({
         college: '',
         year: '', 
