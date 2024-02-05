@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { addResponse } from '../actions';
 
-export default function ReplyComponent({ craftId, refreshPage }) {
+export default function ReplyComponent({ craftId }) {
 
     const [reply, setReply] = useState({
         response:  '',
@@ -22,7 +22,7 @@ export default function ReplyComponent({ craftId, refreshPage }) {
 
         if (sent) {
             alert('reply sent');
-            refreshPage();
+
         } else {
             alert('reply not sent')
         }
