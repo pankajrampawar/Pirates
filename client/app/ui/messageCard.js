@@ -13,7 +13,7 @@ export default function MessageCard(props) {
         return year + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
     };
 
-    cosnt [active, setActive] = useState(false);
+    const [active, setActive] = useState(false);
     const [response, setResponse] = useState('');
 
 
