@@ -13,8 +13,7 @@ export default function RootLayout({children}) {
     const pathname = usePathname();
 
     const params = useParams();
-    console.log(params);
-    console.log(pathname)
+
     const router = useRouter();
 
     const [prevScrollPosition, setPrevScrollPosition] = useState(0);
