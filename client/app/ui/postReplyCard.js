@@ -2,11 +2,8 @@
 
 import { useState } from 'react';
 import { addResponse } from '../actions';
-import { useRouter } from 'next/navigation';
 
-export default function ReplyComponent({ craftId }) {
-
-    const router = useRouter();
+export default function ReplyComponent({ craftId, refreshPage }) {
 
     const [reply, setReply] = useState({
         response:  '',
@@ -25,7 +22,7 @@ export default function ReplyComponent({ craftId }) {
 
         if (sent) {
             alert('reply sent');
-            router.refresh();                    
+            refreshPage();
         } else {
             alert('reply not sent')
         }
