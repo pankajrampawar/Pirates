@@ -1,7 +1,7 @@
 'use client'
 import Link from "next/link";
 import { keaniaOne, happyMonkey } from "./fonts";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { checkAndGetUser } from "./actions";
 import { useRouter } from "next/navigation";
 
