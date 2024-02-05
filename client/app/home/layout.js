@@ -13,7 +13,7 @@ export default function RootLayout({children}) {
     const pathname = usePathname();
 
     const params = useParams();
-
+    console.log(params);
     console.log(pathname)
     const router = useRouter();
 
@@ -23,7 +23,7 @@ export default function RootLayout({children}) {
 
     useEffect(()=>{
 
-        if(pathname === `/home/${params.id}`) setPostCardVisible(false);
+        if(pathname === `/home/${params.id}`) setVisible(false);
 
         const handleScroll = () => {
             const currentScrollPos = window.scrollY;
