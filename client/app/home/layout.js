@@ -20,9 +20,11 @@ export default function RootLayout({children}) {
     const [user, setUser] = useState('');
 
     useEffect(()=>{
-
         const userData = JSON.parse(localStorage.getItem('user'));
         setUser(userData);
+    }, [])
+
+    useEffect(()=>{
 
         if(pathname === `/home/${params.id}`) setVisible(false);
 
