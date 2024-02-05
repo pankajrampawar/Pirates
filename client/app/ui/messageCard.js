@@ -17,8 +17,9 @@ export default function MessageCard(props) {
 
                             </div>
                         </div>
-                        <div className='text-gray-400 text-xs'>
-
+                        <div className='text-gray-400 text-xs flex gap-1'>
+                            <span>{props.branch}</span>
+                            <span>{props.year} year</span>
                         </div>
                 </section>
 

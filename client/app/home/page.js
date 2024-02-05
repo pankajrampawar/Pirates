@@ -62,6 +62,8 @@ export default function Home() {
                                 key={craft._id}
                                 content={craft.content}
                                 id={craft._id}
+                                year = { craft.year &&  craft.year }
+                                branch = { craft.branch && craft.branch }
                             />
                         )
                     })
