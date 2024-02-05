@@ -1,7 +1,7 @@
 'use client'
 
 
-import React, { useState, useEfffect} from 'react';
+import React, { useState, useEffect} from 'react';
 import { happyMonkey } from '../fonts';
 import { postADrop } from '../actions';
 
@@ -12,6 +12,8 @@ export default function PostDrop(props) {
         year: props.year,
         branch: props.branch,
     });
+
+    console.log(drop);
 
     const handleChange = (e) => {
         const { id, value } = e.target;
