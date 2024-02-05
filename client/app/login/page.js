@@ -40,8 +40,6 @@ export default function Login() {
         console.log(userData)
     }
 
-    console.log(userData)
-
     const handleClick = async () => {
         console.log("button clicked")
         if (!userData.username || !userData.password) {
