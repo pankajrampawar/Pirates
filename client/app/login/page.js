@@ -3,13 +3,28 @@
 import React, { useState, useEffect } from 'react';
 import { keaniaOne, happyMonkey } from '../fonts';
 import Image from 'next/image';
-import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import { login } from '../actions';
 
 export default function Login() {
 
     const router = useRouter();
+
+  useEffect(() => {
+    const checkAndGetUserAction = async () => {
+      const response = await checkAndGetUser();
+      
+      if (response.status) {
+        router.push('/home')
+        localStorage.setItem('user', JSON.stringify(response.user))
+      }
+      
+      return
+    };
+
+    checkAndGetUserAction();
+
+  }, [])
 
     const [userData, setUserData] = useState({
         username: '',
