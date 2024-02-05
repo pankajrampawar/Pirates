@@ -14,13 +14,15 @@ export default function RootLayout({children}) {
 
     const params = useParams();
 
-    const router = useRouter();
-
     const [prevScrollPosition, setPrevScrollPosition] = useState(0);
     const [visible , setVisible] = useState(true);
     const [postCardVisible, setPostCardVisible] = useState(false)
+    const [user, setUser] = useState('');
 
     useEffect(()=>{
+
+        const userData = JSON.parse(localStorage.getItem('user'));
+        setUser(userData);
 
         if(pathname === `/home/${params.id}`) setVisible(false);
 
@@ -70,7 +72,7 @@ export default function RootLayout({children}) {
             </div>
 
             <div className={`${postCardVisible ? 'block' : 'hidden' } fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40`}>
-                <PostDrop togglePostCardVisible={togglePostCardVisible}/>
+                <PostDrop togglePostCardVisible={togglePostCardVisible} branch={user.branch} year={user.year}/>
             </div>
         </div>
     )

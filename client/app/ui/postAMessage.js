@@ -8,7 +8,9 @@ import { postADrop } from '../actions';
 export default function PostDrop(props) {
 
     const [drop, setDrop] = useState({
-        craftToAdd: ''
+        craftToAdd: '',
+        year: props.year,
+        branch: props.branch,
     });
 
     const handleChange = (e) => {
