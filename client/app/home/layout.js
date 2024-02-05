@@ -6,8 +6,11 @@ import { useState, useEffect } from 'react'
 import AddButton from "../ui/addButton";
 import { useRouter } from "next/navigation";
 import PostDrop from "../ui/postAMessage";
+import { usePathname } from "next/navigation";
 
 export default function RootLayout({children}) {
+
+    const pathname = usePathname();
 
     const router = useRouter();
 
@@ -16,6 +19,9 @@ export default function RootLayout({children}) {
     const [postCardVisible, setPostCardVisible] = useState(false)
 
     useEffect(()=>{
+
+        if(pathname === '/home/[id]') setPostCardVisible(false)
+
         const handleScroll = () => {
             const currentScrollPos = window.scrollY;
             
