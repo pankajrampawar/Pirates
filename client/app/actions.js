@@ -164,7 +164,7 @@ export const checkAndGetUser = async () => {
             return false
         }
 
-        console.log(result.data.message);
+        console.log(result);
 
         return { status: true, user: result.data.user };
     } catch (error) {
