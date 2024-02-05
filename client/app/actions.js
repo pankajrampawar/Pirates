@@ -116,11 +116,15 @@ export const getReplyForCraft = async (id) => {
     }
 }
 
-export const postADrop = async (drop) => {
+export const postADrop = async (drop, year, branch) => {
     try {
-        console.log(drop)
+        body = {
+            craftToAdd: drop.craftToAdd,
+            year: year,
+            branch: branch
+        }
         const response = await axios.post('https://whiseve.com/craft/addCraft', 
-            drop,
+            body,
             {
                 withCredentials: true
             }

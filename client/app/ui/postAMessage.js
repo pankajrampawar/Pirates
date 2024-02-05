@@ -9,11 +9,8 @@ export default function PostDrop(props) {
 
     const [drop, setDrop] = useState({
         craftToAdd: '',
-        year: props.year,
-        branch: props.branch,
     });
-    console.log(props)
-    console.log(drop);
+
 
     const handleChange = (e) => {
         const { id, value } = e.target;
@@ -31,7 +28,7 @@ export default function PostDrop(props) {
             return;
         }
 
-        const response = await postADrop(drop);
+        const response = await postADrop(drop, props.year, props.branch);
 
         if (response) {
             alert('drop sent');

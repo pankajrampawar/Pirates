@@ -24,7 +24,6 @@ export default function RootLayout({children}) {
         if (userData) setUser(userData);
     }, [])
 
-    console.log(user);
 
     useEffect(()=>{
 
@@ -46,7 +45,6 @@ export default function RootLayout({children}) {
 
     const togglePostCardVisible = () => {
         setPostCardVisible((prev) => !prev)
-        console.log("toggle CLCIKED")
     }
 
     return (
