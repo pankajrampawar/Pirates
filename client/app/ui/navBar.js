@@ -17,7 +17,7 @@ export default function Navbar() {
                 />
             </div>
             <div className={`text-2xl ${keaniaOne.className}`}>  
-                Nexus
+                WhisEve
             </div>
         </div>
     )

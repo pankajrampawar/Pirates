@@ -39,7 +39,7 @@ export default function PageOne() {
     return (
         <div className='flex flex-col justify-center items-center gap-28 mt-20 px-10'>
             <header className={`text-[36px] ${keaniaOne.className} tracking-wider`}>
-              Nexus
+              WhisEve
             </header>
 
             <section className='flex flex-col gap-14'>

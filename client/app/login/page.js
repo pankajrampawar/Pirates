@@ -64,7 +64,7 @@ export default function Login() {
     return (
         <div className='h-full px-10 pb-20 flex flex-col py-20 text-center items-center justify-center gap-40'>
            <header className={`text-[33px] ${keaniaOne.className} tracking-wider`}>
-              Nexus
+              WhisEve
             </header>
 
             <div className='flex flex-col gap-5'>
