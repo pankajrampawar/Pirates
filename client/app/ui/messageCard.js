@@ -96,19 +96,21 @@ export default function MessageCard(props) {
                         send
                     </button>
                 </div>
-
-                <div className='flex gap-2 justify-center items-center text-white text-base'>
-                    <Image
-                        src={'../reply.svg'}
-                        width={23}
-                        height={23}
-                        alt='reply'
-                        className='invert'
-                    />
-                    <p className='pb-1'>
-                        {reply}
-                    </p>
-                </div>
+                
+                <Link href={`/home/${props.id}`}>
+                    <div className='flex gap-2 justify-center items-center text-white text-base'>
+                        <Image
+                            src={'../reply.svg'}
+                            width={23}
+                            height={23}
+                            alt='reply'
+                            className='invert'
+                        />
+                        <p className='pb-1'>
+                            {reply}
+                        </p>
+                    </div>
+                </Link>
                 {/* <div className='flex gap-3 text-xl'>
                 <div className='flex gap-1 justify-center items-center'>
                         <span>
