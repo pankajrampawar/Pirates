@@ -20,38 +20,36 @@ export default function Home() {
             setCrafts(messages);
         }
 
-        // const checkAndGetUserAction = async () => {
-        //     const response = await checkAndGetUser();
+        const checkAndGetUserAction = async () => {
+            const response = await checkAndGetUser();
             
-        //     if (response.status) {
-        //       localStorage.setItem('user', JSON.stringify(response.user))
+            if (response.status) {
+              localStorage.setItem('user', JSON.stringify(response.user))
 
-        //       setUser(response.user);
+              setUser(response.user);
 
              
-        //     } else if (!response.status) {
-        //         router.push('/login');
-        //     }
+            } else if (!response.status) {
+                router.push('/login');
+            }
             
-        //     return;
-        // };
+            return;
+        };
         
-        // const checkUser = () => {
-        //     const user = JSON.parse(localStorage.getItem('user'))
+        const checkUser = () => {
+            const user = JSON.parse(localStorage.getItem('user'))
             
-        //     if (user) {
-        //         setUser(user);
+            if (user) {
+                setUser(user);
 
-        //         return; 
-        //     }
+                return; 
+            }
             
-        //     checkAndGetUserAction()
-        //     return;
-        // }
+            checkAndGetUserAction()
+            return;
+        }
         
-        // checkUser();
-
-        getAllCraft();
+        checkUser();
     }, []);
 
     return (
