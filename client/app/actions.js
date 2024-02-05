@@ -118,7 +118,7 @@ export const getReplyForCraft = async (id) => {
 
 export const postADrop = async (drop, year, branch) => {
     try {
-        body = {
+        const body = {
             craftToAdd: drop.craftToAdd,
             year: year,
             branch: branch
