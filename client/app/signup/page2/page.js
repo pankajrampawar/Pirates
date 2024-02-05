@@ -5,6 +5,7 @@ import { keaniaOne, happyMonkey } from '@/app/fonts'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { signup } from '@/app/actions'
+import { checkAndGetUser } from '@/app/actions'
 
 export default function PageTwo() {
 

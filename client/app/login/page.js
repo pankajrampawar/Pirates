@@ -5,6 +5,7 @@ import { keaniaOne, happyMonkey } from '../fonts';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { login } from '../actions';
+import { checkAndGetUser } from '../actions';
 
 export default function Login() {
 

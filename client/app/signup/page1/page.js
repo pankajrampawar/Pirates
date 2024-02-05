@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { keaniaOne, happyMonkey } from '@/app/fonts'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { checkAndGetUser } from '@/app/actions'
 
 export default function PageOne() {
 
