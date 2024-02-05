@@ -23,14 +23,14 @@ export default function Home() {
             const response = await checkAndGetUser();
             
             if (response.status) {
-              router.push('/home')
-
               localStorage.setItem('user', JSON.stringify(response.user))
 
               setUser(response.user);
+            } else if (!response.status) {
+                router.push('/login');
             }
             
-            return
+            return;
         };
         
         const checkUser = () => {
