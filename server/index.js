@@ -6,7 +6,7 @@ const craftRoute = require('./routes/CraftRoutes');
 const responseRoute = require('./routes/ResponseRoutes');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
-const port = process.env.PORT ||  8080;
+const port = 3000;
 
 const app = express();
 
