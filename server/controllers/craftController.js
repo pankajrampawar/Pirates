@@ -30,7 +30,7 @@ exports.getCraft = async (req, res) => {
 exports.addCraft = async (req, res) => {
     try {
 
-        const { craftToAdd } = req.body;
+        const { craftToAdd, branch, year } = req.body;
 
         if (!craftToAdd) {
             res.status(400).json({ messasge: "craft is required" });
@@ -38,7 +38,9 @@ exports.addCraft = async (req, res) => {
         }
 
         const newCraft = new CraftModel({
-            content: craftToAdd 
+            content: craftToAdd, 
+            branch: branch,
+            year: year,
         })
         
         await newCraft.save();
