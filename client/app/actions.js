@@ -167,7 +167,7 @@ export const checkAndGetUser = async () => {
         const userData = result.data || (result.response?.data && result.response.data);
 
         if (!userData) {
-            return false
+            return { satus: false }
         }
 
         console.log(result);
