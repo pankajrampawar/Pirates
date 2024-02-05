@@ -87,7 +87,7 @@ export const getCrafts = async () => {
 
 export const getCraft = async (id) => {
     try {
-        const response = await axios.get('http://localhost:8080/craft/getCraft', 
+        const response = await axios.get('https://whiseve.com/craft/getCraft', 
             { 
                 params: { craftId: id },
                 withCredentials: true,
@@ -103,7 +103,7 @@ export const getCraft = async (id) => {
 
 export const getReplyForCraft = async (id) => {
     try {
-        const response = await axios.get('http://localhost:8080/response/getResponses', 
+        const response = await axios.get('https://whiseve.com/response/getResponses', 
         { 
             params: { craftId: id },
             withCredentials: true,
@@ -118,7 +118,7 @@ export const getReplyForCraft = async (id) => {
 
 export const postADrop = async (drop) => {
     try {
-        const response = await axios.post('http://localhost:8080/craft/addCraft', 
+        const response = await axios.post('https://whiseve.com/craft/addCraft', 
             drop,
             {
                 withCredentials: true
@@ -135,7 +135,7 @@ export const postADrop = async (drop) => {
 
 export const addResponse = async (craftId, response) => {
     try {
-        const resul = await axios.post('http://localhost:8080/response/addResponse', 
+        const resul = await axios.post('https://whiseve.com/response/addResponse', 
             { craftId, response },
             {
                 withCredentials: true
