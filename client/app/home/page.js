@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import MessageCard from "../ui/messageCard"
 import { getCrafts } from '../actions';
 import { useRouter } from 'next/navigation';
+import { checkAndGetUser } from '../actions';
 
 export default function Home() {
 
