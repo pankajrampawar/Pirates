@@ -12,7 +12,7 @@ export default function PostDrop(props) {
         year: props.year,
         branch: props.branch,
     });
-
+    console.log(props)
     console.log(drop);
 
     const handleChange = (e) => {
