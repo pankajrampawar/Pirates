@@ -105,7 +105,7 @@ export default function MessageCard(props) {
                         alt='reply'
                         className='invert'
                     />
-                    <p>
+                    <p className='pb-1'>
                         {reply}
                     </p>
                 </div>
