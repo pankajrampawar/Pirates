@@ -1,7 +1,30 @@
+' use client'
+
 import Link from "next/link";
 import { keaniaOne, happyMonkey } from "./fonts";
+import { useEffect } from "react";
+import { checkAndGetUser } from "./actions";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const checkAndGetUserAction = async () => {
+      const response = await checkAndGetUser();
+      
+      if (response.status) {
+        router.push('/home')
+        localStorage.setItem('user', JSON.stringify(response.user))
+      }
+      
+      return
+    };
+
+    checkAndGetUserAction();
+
+  }, [])
 
   return (
     <main className="h-full w-full bg-black text-white flex items-center flex-col gap-9 pt-20 px-7">
