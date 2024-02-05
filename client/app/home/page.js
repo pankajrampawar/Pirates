@@ -64,7 +64,7 @@ export default function Home() {
                                 id={craft._id}
                                 year = { craft.year &&  craft.year }
                                 branch = { craft.branch && craft.branch }
-                                replies = { craft.responses.length }
+                                replies = { craft.response ? craft.response.length : 0 }
                             />
                         )
                     })
