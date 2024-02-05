@@ -51,7 +51,7 @@ export default function ReplySection() {
             <div className='flex flex-col gap-3 pl-4'>
                 {
                     replies && 
-                    replies.map((reply) => (
+                    replies.slice().reverse().map((reply) => (
                         <ReplyCard 
                             key= {reply._id}
                             id = {reply._id}
