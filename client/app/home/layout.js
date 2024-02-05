@@ -4,13 +4,16 @@ import Navbar from "../ui/navBar"
 import BottomBar from "../ui/bottomBar";
 import { useState, useEffect } from 'react'
 import AddButton from "../ui/addButton";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams, usePathname } from "next/navigation";
 import PostDrop from "../ui/postAMessage";
-import { usePathname } from "next/navigation";
+
 
 export default function RootLayout({children}) {
 
     const pathname = usePathname();
+
+    const params = useParams();
+
     console.log(pathname)
     const router = useRouter();
 
@@ -20,7 +23,7 @@ export default function RootLayout({children}) {
 
     useEffect(()=>{
 
-        if(pathname === '/home/[id]') setPostCardVisible(false)
+        if(pathname === `/home/${params.id}`) setPostCardVisible(false);
 
         const handleScroll = () => {
             const currentScrollPos = window.scrollY;
