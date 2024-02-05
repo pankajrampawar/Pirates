@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 
 export const signup = async (user) => {
     try {
-        const response = await axios.post('http://ec2-52-63-170-17.ap-southeast-2.compute.amazonaws.com:8080/user/signup', 
+        const response = await axios.post('https://whiseve.com/user/signup', 
             { user },
             {
                 withCredentials: true,
@@ -39,7 +39,7 @@ export const login = async (username, password) => {
             password: password,
         }
 
-        const response = await axios.post("http://ec2-52-63-170-17.ap-southeast-2.compute.amazonaws.com:8080/user/login", 
+        const response = await axios.post("https://whiseve.com/user/login", 
             { user },
             {
                 withCredentials: true,
@@ -73,7 +73,7 @@ export const login = async (username, password) => {
 export const getCrafts = async () => {
     try {
 
-        const response = await axios.get('http://ec2-52-63-170-17.ap-southeast-2.compute.amazonaws.com:8080/craft/getCrafts', {
+        const response = await axios.get('https://whiseve.com/craft/getCrafts', {
             withCredentials: true,
         });
         
