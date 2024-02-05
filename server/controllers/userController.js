@@ -87,7 +87,7 @@ exports.userLogin = async (req, res) => {
     }
 }
 
-exports.checkStatus = async () => {
+exports.checkStatus = async (req, res) => {
     try {
         const userId = req.userId
 
