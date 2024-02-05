@@ -34,7 +34,7 @@ export default function PageTwo() {
         password: '',
     });
 
-    console.log(userData);
+
 
     useEffect(()=>{
         const stringData = localStorage.getItem('userData');

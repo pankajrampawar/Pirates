@@ -39,7 +39,7 @@ export default function PageOne() {
             [id]: value
         }));
     }
-    console.log(userData)
+
 
     const handleCLick = () => {
         if (!userData.college && !userData.year && !userData.branch) {
