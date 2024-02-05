@@ -154,7 +154,11 @@ export const addResponse = async (craftId, response) => {
 
 export const checkAndGetUser = async () => {
     try {
-        const result = await axios.get('https://whiseve.com/user/checkStatus');
+        const result = await axios.get('https://whiseve.com/user/checkStatus',
+            {
+                withCredentials: true
+            }
+        );
         
         if (!result) {
             return false
