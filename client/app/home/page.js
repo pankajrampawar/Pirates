@@ -3,9 +3,14 @@
 import React, { useState, useEffect } from 'react'
 import MessageCard from "../ui/messageCard"
 import { getCrafts } from '../actions';
+import { useRouter } from 'next/navigation';
+
 export default function Home() {
 
+    const router = useRouter();
+
     const [crafts, setCrafts] = useState(['']);
+    const [user, setUser] = useState('');
 
     useEffect(()=>{
         const getAllCraft = async() => {
@@ -19,14 +24,29 @@ export default function Home() {
             
             if (response.status) {
               router.push('/home')
-              
+
               localStorage.setItem('user', JSON.stringify(response.user))
+
+              setUser(response.user);
             }
             
             return
         };
         
-        checkAndGetUserAction();
+        const checkUser = () => {
+            const user = JSON.parse(localStorage.getItem('user'))
+            
+            if (user) {
+                setUser(user);
+
+                return; 
+            }
+            
+            checkAndGetUserAction()
+            return;
+        }
+        
+        checkUser();
 
         getAllCraft();
     }, []);
