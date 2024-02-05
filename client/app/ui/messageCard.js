@@ -17,6 +17,7 @@ export default function MessageCard(props) {
     const [active, setActive] = useState(false);
     const [response, setResponse] = useState('');
 
+    const [reply, setReply] = useState(props.replies);
 
     const handleChange = (e) => {
         const { value } = e.target;
@@ -38,6 +39,7 @@ export default function MessageCard(props) {
         const result = await addResponse(props.id, response);
         
         if (result) {
+            setReply(prev => prev+1);
             alert("response sent");
             return;
         }
@@ -104,7 +106,7 @@ export default function MessageCard(props) {
                         className='invert'
                     />
                     <p>
-                        {props.replies ? props.replies : ''}
+                        {reply}
                     </p>
                 </div>
                 {/* <div className='flex gap-3 text-xl'>
