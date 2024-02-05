@@ -86,3 +86,20 @@ exports.userLogin = async (req, res) => {
        return res.status(500).json({ message: "unable to create the user, please try again later. (controller error)", error });
     }
 }
+
+exports.checkStatus = async () => {
+    try {
+        const userId = req.userId
+
+        const user = UserModel.findById(userId);
+        
+        if (!user) {
+            return res.status(404).json({ message: 'user does not exist', status: false });
+        }
+
+        return res.status(200).json({ message: 'user found', status: true, user: user });
+    } catch (error) {
+        console.log("Error in check status", error);
+        return res.status(500).josn({ message: "internal server error", status: false });
+    }
+}
