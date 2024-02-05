@@ -19,7 +19,7 @@ export default function Home() {
         <div className="text-white">
             <div>
                 { crafts &&
-                    crafts.map((craft) => {
+                    crafts.slice().reverse().map((craft) => {
                         return(
                             <MessageCard
                                 key={craft._id}
