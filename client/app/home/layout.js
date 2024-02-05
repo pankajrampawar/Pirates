@@ -24,6 +24,8 @@ export default function RootLayout({children}) {
         setUser(userData);
     }, [])
 
+    console.log(user);
+
     useEffect(()=>{
 
         if(pathname === `/home/${params.id}`) setVisible(false);
