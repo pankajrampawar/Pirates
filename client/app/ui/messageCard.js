@@ -88,7 +88,7 @@ export default function MessageCard(props) {
                     </div>
 
                     <button 
-                        className={`text-black py-1 px-2 rounded-lg  ${active ? 'bg-white font-bold' : 'bg-gray-200 font-medium'}`}
+                        className={`text-black py-1 px-2 rounded-lg text-sm  ${active ? 'bg-white font-bold' : 'bg-gray-200 font-medium'}`}
                         onClick={handleClick}
                     >
                         send
@@ -98,8 +98,8 @@ export default function MessageCard(props) {
                 <div className='flex gap-2 justify-center items-center text-white text-base'>
                     <Image
                         src={'../reply.svg'}
-                        width={29}
-                        height={29}
+                        width={23}
+                        height={23}
                         alt='reply'
                         className='invert'
                     />
