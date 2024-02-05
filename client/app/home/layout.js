@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 export default function RootLayout({children}) {
 
     const pathname = usePathname();
-
+    console.log(pathname)
     const router = useRouter();
 
     const [prevScrollPosition, setPrevScrollPosition] = useState(0);
