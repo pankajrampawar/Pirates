@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { happyMonkey } from '../fonts'
 import Link from 'next/link'
 import { addResponse } from '../actions'
+import Image from 'next/image'
 
 export default function MessageCard(props) {
 
@@ -72,26 +73,40 @@ export default function MessageCard(props) {
                         {props.content}
                     </p>
                 </section>
-
             </Link>
             
             <section className='flex justify-between items-center pt-2'>
-                <div>
-                    <input
-                        placeholder='Your Response'
-                        className='bg-secondary px-2 py-2 text-sm rounded-xl max-w-[120px] placeholder:text-white focus:outline-none'
-                        onChange={handleChange}
-                        value={response}
-                        id='response'
-                    />
+                <div className='flex gap-2 items-center'>
+                    <div>
+                        <input
+                            placeholder='Your Response'
+                            className='bg-secondary px-2 py-2 text-sm rounded-xl max-w-[120px] placeholder:text-white focus:outline-none'
+                            onChange={handleChange}
+                            value={response}
+                            id='response'
+                        />
+                    </div>
+
+                    <button 
+                        className={`text-black py-1 px-2 rounded-lg  ${active ? 'bg-white font-bold' : 'bg-gray-200 font-medium'}`}
+                        onClick={handleClick}
+                    >
+                        send
+                    </button>
                 </div>
 
-                <button 
-                    className={`text-black p-2  ${active ? 'bg-white font-bold' : 'bg-gray-200 font-medium'}`}
-                    onClick={handleClick}
-                >
-                    send
-                </button>
+                <div className='flex gap-2 justify-center items-center text-white text-base'>
+                    <Image
+                        src={'../reply.svg'}
+                        width={29}
+                        height={29}
+                        alt='reply'
+                        className='invert'
+                    />
+                    <p>
+                        {props.replies ? props.replies : ''}
+                    </p>
+                </div>
                 {/* <div className='flex gap-3 text-xl'>
                 <div className='flex gap-1 justify-center items-center'>
                         <span>
