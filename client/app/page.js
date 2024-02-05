@@ -1,5 +1,4 @@
 'use client'
-
 import Link from "next/link";
 import { keaniaOne, happyMonkey } from "./fonts";
 import { useEffect } from "react";
