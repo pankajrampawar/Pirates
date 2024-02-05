@@ -26,6 +26,8 @@ export default function Home() {
               localStorage.setItem('user', JSON.stringify(response.user))
 
               setUser(response.user);
+
+              getAllCraft();
             } else if (!response.status) {
                 router.push('/login');
             }
@@ -47,8 +49,6 @@ export default function Home() {
         }
         
         checkUser();
-
-        getAllCraft();
     }, []);
 
     return (
