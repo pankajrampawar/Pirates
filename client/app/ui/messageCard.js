@@ -5,6 +5,13 @@ import { happyMonkey } from '../fonts'
 import Link from 'next/link'
 
 export default function MessageCard(props) {
+
+    const getOrdinalYear = (year) => {
+        const suffixes = ['th', 'st', 'nd', 'rd'];
+        const v = year % 100;
+        return year + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
+    };
+
     return (
         <main className='flex flex-col text-lg bg-surface py-3 gap-3 px-4 my-2'>
             <Link href={`/home/${props.id}`}>
@@ -19,7 +26,9 @@ export default function MessageCard(props) {
                         </div>
                         <div className='text-gray-400 text-xs flex gap-1'>
                             <span>{props.branch}</span>
-                            <span>{props.year} year</span>
+                            <span>{
+                                props.year ? getOrdinalYear(props.year) + ' year' : ''
+                            }</span>
                         </div>
                 </section>
 
