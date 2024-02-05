@@ -10,8 +10,24 @@ export default function Home() {
     useEffect(()=>{
         const getAllCraft = async() => {
             const messages = await getCrafts();
+
             setCrafts(messages);
         }
+
+        const checkAndGetUserAction = async () => {
+            const response = await checkAndGetUser();
+            
+            if (response.status) {
+              router.push('/home')
+              
+              localStorage.setItem('user', JSON.stringify(response.user))
+            }
+            
+            return
+        };
+        
+        checkAndGetUserAction();
+
         getAllCraft();
     }, []);
 
