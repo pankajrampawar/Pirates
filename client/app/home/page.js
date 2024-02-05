@@ -22,7 +22,7 @@ export default function Home() {
 
         const checkAndGetUserAction = async () => {
             const response = await checkAndGetUser();
-            
+          
             if (response.status) {
               localStorage.setItem('user', JSON.stringify(response.user))
 
