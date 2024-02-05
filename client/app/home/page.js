@@ -28,7 +28,7 @@ export default function Home() {
 
               setUser(response.user);
 
-             
+              getAllCraft();
             } else if (!response.status) {
                 router.push('/login');
             }
