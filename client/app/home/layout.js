@@ -21,7 +21,7 @@ export default function RootLayout({children}) {
 
     useEffect(()=>{
         const userData = JSON.parse(localStorage.getItem('user'));
-        setUser(userData);
+        if (userData) setUser(userData);
     }, [])
 
     console.log(user);
