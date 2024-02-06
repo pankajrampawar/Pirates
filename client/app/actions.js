@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 
 export const signup = async (user) => {
     try {
-        const response = await axios.post('https://whiseve.com/user/signup', 
+        const response = await axios.post('https://backend.whiseve.com/user/signup', 
             { user },
             {
                 withCredentials: true,
@@ -39,7 +39,7 @@ export const login = async (username, password) => {
             password: password,
         }
 
-        const response = await axios.post("https://whiseve.com/user/login", 
+        const response = await axios.post("https://backend.whiseve.com/user/login", 
             { user },
             {
                 withCredentials: true,
@@ -73,7 +73,7 @@ export const login = async (username, password) => {
 export const getCrafts = async () => {
     try {
 
-        const response = await axios.get('https://whiseve.com/craft/getCrafts', {
+        const response = await axios.get('https://backend.whiseve.com/craft/getCrafts', {
             withCredentials: true,
         });
         
@@ -87,7 +87,7 @@ export const getCrafts = async () => {
 
 export const getCraft = async (id) => {
     try {
-        const response = await axios.get('https://whiseve.com/craft/getCraft', 
+        const response = await axios.get('https://backend.whiseve.com/craft/getCraft', 
             { 
                 params: { craftId: id },
                 withCredentials: true,
@@ -103,7 +103,7 @@ export const getCraft = async (id) => {
 
 export const getReplyForCraft = async (id) => {
     try {
-        const response = await axios.get('https://whiseve.com/response/getResponses', 
+        const response = await axios.get('https://backend.whiseve.com/response/getResponses', 
         { 
             params: { craftId: id },
             withCredentials: true,
@@ -123,7 +123,7 @@ export const postADrop = async (drop, year, branch) => {
             year: year,
             branch: branch
         }
-        const response = await axios.post('https://whiseve.com/craft/addCraft', 
+        const response = await axios.post('https://backend.whiseve.com/craft/addCraft', 
             body,
             {
                 withCredentials: true
@@ -140,7 +140,7 @@ export const postADrop = async (drop, year, branch) => {
 
 export const addResponse = async (craftId, response) => {
     try {
-        const result = await axios.post('https://whiseve.com/response/addResponse', 
+        const result = await axios.post('https://backend.whiseve.com/response/addResponse', 
             { craftId, response },
             {
                 withCredentials: true
@@ -159,7 +159,7 @@ export const addResponse = async (craftId, response) => {
 
 export const checkAndGetUser = async () => {
     try {
-        const result = await axios.get('https://whiseve.com/user/checkStatus',
+        const result = await axios.get('https://backend.whiseve.com/user/checkStatus',
             {
                 withCredentials: true
             }
