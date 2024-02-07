@@ -12,30 +12,6 @@ export default function ReplyCard(props) {
                 </p>
             </section>
             <section className='flex gap-3 justify-center pt-3'>
-            {/* <div className='flex gap-1 justify-center items-center'>
-                        <span>
-                            🫦
-                        </span>
-                        <span className='text-sm'>
-                            40
-                        </span>
-                    </div>
-                    <div className='flex gap-1 justify-center items-center'>
-                        <span>
-                            💀 
-                        </span>
-                        <span className='text-sm'>
-                            60
-                        </span>
-                    </div>
-                    <div className='flex gap-1 justify-center items-center'>
-                        <span>
-                            🔥
-                        </span>
-                        <span className='text-sm'>
-                            30
-                        </span>
-                    </div> */}
             </section>
         </div>
     )
