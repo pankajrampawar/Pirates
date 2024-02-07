@@ -16,7 +16,7 @@ export default function Navbar() {
                     className='invert'
                 />
             </div>
-            <div className={`text-2xl ${keaniaOne.className}`}>  
+            <div className={`text-2xl ${keaniaOne.className} tracking-wider`}>  
                 WhisEve
             </div>
         </div>
