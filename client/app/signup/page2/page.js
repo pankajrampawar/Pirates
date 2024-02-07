@@ -18,7 +18,7 @@ export default function PageTwo() {
         if (response.status) {
           const userCopy = response.user;  
           delete userCopy.password;
-          
+
           router.push('/home')
           localStorage.setItem('user', JSON.stringify(userCopy));
         }
@@ -64,14 +64,26 @@ export default function PageTwo() {
 
     const handleSingup = async ()=>{
         if (!userData.username && !userData.password) {
-            alert("Come on bro! fill the details..");
+            alert("username/password mei bharu? dumbass!");
             
             return;
         }
 
-        const signupStatus = await signup(userData);
-        if (signupStatus) router.push('/home');
-        else alert('hmm! we are kinda busy, try again later..');
+        const response = await signup(userData);
+
+        if (response.status) {
+            if (response.user) {
+                const userCopy = response.user;
+                delete userCopy.password;
+                localStorage.setItem('user', JSON.stringify(userCopy))
+            }
+            router.push('/home');
+            return;
+        } 
+        
+        alert('not allowed for you :/ (jk, plz try again later), have a great day :)');
+        
+        return;
     }
 
     return (
