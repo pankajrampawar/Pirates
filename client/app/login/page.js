@@ -42,7 +42,6 @@ export default function Login() {
             ...prev,
             [id] : value
         }))
-        console.log(userData)
     }
 
     const handleClick = async () => {
