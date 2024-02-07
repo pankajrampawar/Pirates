@@ -11,7 +11,7 @@ const port = 3000
 const app = express();
 
 const corsOption = {
-    origin: 'https://pirates-ten.vercel.app',
+    origin: 'https://whiseve.com',
 
     credentials: true
 }
