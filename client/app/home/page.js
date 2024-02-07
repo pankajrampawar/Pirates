@@ -35,9 +35,11 @@ export default function Home() {
 
               return;
             } else if (!response.status) {
-                router.push('/login');
+                router.push('/');
                 return;
             }
+
+            router.push('/')
             return;
         };
         
