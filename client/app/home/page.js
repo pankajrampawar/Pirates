@@ -64,9 +64,9 @@ export default function Home() {
                     crafts.slice().reverse().map((craft) => {
                         return(
                             <MessageCard
-                                key={craft._id}
-                                content={craft.content}
-                                id={craft._id}
+                                key={ craft._id }
+                                content={ craft.content }
+                                id={ craft._id }
                                 year = { craft.year &&  craft.year }
                                 branch = { craft.branch && craft.branch }
                                 replies = { craft.responses ? craft.responses.length : 0 }
