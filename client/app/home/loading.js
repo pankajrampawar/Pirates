@@ -1,4 +1,4 @@
-import HomeSkeleton from "../ui/skeletons/homeSkeleton";
+import { HomeSkeleton } from "../ui/skeletons"
 
 export default function skeleton() {
     return(
