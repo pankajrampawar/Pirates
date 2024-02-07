@@ -79,8 +79,11 @@ exports.userLogin = async (req, res) => {
             sameSite: 'None',
             secure: true
         })
+        const userCopy = user;
 
-        return res.status(200).json({ message: "welcome back to Nexus"})
+        delete userCopy.password;
+
+        return res.status(200).json({ message: "welcome back to Nexus", user: userCopy });
 
     } catch (error) {
        return res.status(500).json({ message: "unable to create the user, please try again later. (controller error)", error });
