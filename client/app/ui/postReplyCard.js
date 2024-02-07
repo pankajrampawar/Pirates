@@ -21,7 +21,7 @@ export default function ReplyComponent({ craftId, handleReplySent }) {
         const sent = await addResponse(craftId, reply.response)
 
         if (sent) {
-            handleReplySent(true);
+            handleReplySent((prev) => !prev);
             setReply({response: ''})
             alert('reply sent');
         } else {
