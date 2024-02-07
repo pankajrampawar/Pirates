@@ -1,5 +1,7 @@
 import { HomeSkeleton } from "../ui/skeletons";
 
-export default function loading() {
-    return <HomeSkeleton/>
+export default function Loading() {
+    return <div>
+        <HomeSkeleton/>
+    </div>
 }
