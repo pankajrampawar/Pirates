@@ -55,8 +55,8 @@ export default function Login() {
         const { status, user } = await handleLogin();
         
         if (status) {
-            router.push('/home');
             localStorage.setItem('user', JSON.stringify(user));
+            router.push('/home');
         }
         
         if (!status) {
