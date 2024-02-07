@@ -98,7 +98,7 @@ export default function MessageCard(props) {
                 </div>
                 
                 <Link href={`/home/${props.id}`}>
-                    <div className='flex gap-2 justify-center items-center text-white text-base'>
+                    <div className='flex gap-1 justify-center items-center text-gray-300 text-base'>
                         <Image
                             src={'../reply.svg'}
                             width={23}
