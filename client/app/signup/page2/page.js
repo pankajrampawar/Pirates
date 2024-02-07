@@ -14,12 +14,11 @@ export default function PageTwo() {
     useEffect(() => {
       const checkAndGetUserAction = async () => {
         const response = await checkAndGetUser();
-        
-        const userCopy = response.user;
-
-        delete userCopy.password;
 
         if (response.status) {
+          const userCopy = response.user;  
+          delete userCopy.password;
+          
           router.push('/home')
           localStorage.setItem('user', JSON.stringify(userCopy));
         }
