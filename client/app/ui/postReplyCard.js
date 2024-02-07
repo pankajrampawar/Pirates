@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { addResponse } from '../actions';
 
-export default function ReplyComponent({ craftId }) {
+export default function ReplyComponent({ craftId, handleReplySent }) {
 
     const [reply, setReply] = useState({
         response:  '',
@@ -21,12 +21,13 @@ export default function ReplyComponent({ craftId }) {
         const sent = await addResponse(craftId, reply.response)
 
         if (sent) {
+            handleReplySent(true);
             alert('reply sent');
-
         } else {
             alert('reply not sent')
         }
     }
+
 
     return (
         <div className='bg-surface p-4 pb-2 flex-col gap-4 flex '>

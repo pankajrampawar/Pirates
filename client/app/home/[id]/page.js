@@ -13,6 +13,7 @@ export default function ReplySection() {
 
     const [replies, setReplies] = useState([' ']);
     const [craft, setCraft] = useState(' ')
+    const [replySent, setReplySent] = useState(false)
     const params = useParams();
     const craftId = params.id;
 
@@ -33,6 +34,15 @@ export default function ReplySection() {
         getAllReplies();
     }, [])
 
+    useEffect(() => {
+        const getAllReplies = async () => {
+            const repliesGot = await getReplyForCraft(craftId);
+            setReplies(repliesGot);
+        }
+
+        getAllReplies();
+    }, [replySent])
+
     return (
         <div className='flex flex-col gap-2'>
             {   craft.content && craft.content &&
@@ -44,7 +54,7 @@ export default function ReplySection() {
             }
 
             <div>
-                <ReplyComponent craftId={params.id}/> 
+                <ReplyComponent craftId={params.id} handleReplySent={setReplySent}/> 
             </div>
 
             <div className='flex flex-col gap-3 pl-4'>
