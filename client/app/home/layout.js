@@ -57,7 +57,7 @@ export default function RootLayout({children}) {
                 {children}
             </div>
 
-            <div className={`fixed bg-black w-full transition-all duration-500 bottom-0 left-0 ${ visible ? 'opacity-100' : 'opacity-0 translate-y-8' }`}>
+            <div className={`fixed bg-black w-full transition-all duration-500 bottom-0 left-0 hidden ${ visible ? 'opacity-100' : 'opacity-0 translate-y-8' }`}>
                 <BottomBar/>
             </div>
 
