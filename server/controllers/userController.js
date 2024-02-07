@@ -40,7 +40,7 @@ exports.createNewUser = async (req, res) => {
             secure: true
         })
 
-        return res.status(200).json({ message: `Welcome to new gen, ${username} enter the Nexus world...` });
+        return res.status(200).json({ message: `Welcome to Whiseve, ${username}`, user: newUser });
 
     } catch(error) {
         return res.status(500).json({ message: "unable to create the user, please try again later. (controller error)", error });
