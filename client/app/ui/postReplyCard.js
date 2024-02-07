@@ -22,6 +22,7 @@ export default function ReplyComponent({ craftId, handleReplySent }) {
 
         if (sent) {
             handleReplySent(true);
+            setReply({response: ''})
             alert('reply sent');
         } else {
             alert('reply not sent')
