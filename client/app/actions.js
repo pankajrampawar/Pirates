@@ -62,11 +62,11 @@ export const login = async (username, password) => {
 
         console.log(response);
         
-        return true;
+        return { status: true, user: response.user };
     } catch (error) {
         console.log("error logging in", error);
         alert(error)
-        return false;
+        return {status : false };
     }
 }
 
