@@ -22,11 +22,14 @@ export default function Home() {
 
         const checkAndGetUserAction = async () => {
             const response = await checkAndGetUser();
-          
-            if (response.status) {
-              localStorage.setItem('user', JSON.stringify(response.user))
+                
+            const userCopy = response.user;
+            delete userCopy.password
 
-              setUser(response.user);
+            if (response.status) {
+              localStorage.setItem('user', JSON.stringify(userCopy))
+
+              setUser(userCopy);
 
               getAllCraft();
             } else if (!response.status) {
