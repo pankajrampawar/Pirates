@@ -11,7 +11,7 @@ const port = 3000
 const app = express();
 
 const corsOption = {
-    origin: 'https://whiseve.com',
+    origin: ['https://whiseve.com', 'https://www.whiseve.com'],
 
     credentials: true
 }
