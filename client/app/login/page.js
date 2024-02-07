@@ -14,13 +14,14 @@ export default function Login() {
   useEffect(() => {
     const checkAndGetUserAction = async () => {
       const response = await checkAndGetUser();
-      
-      const userCopy = response.user;
-      
-      delete userCopy.password;
 
       if (response.status) {
+        const userCopy = response.user;
+      
+        delete userCopy.password;
+
         router.push('/home')
+
         localStorage.setItem('user', JSON.stringify(userCopy))
       }
       
@@ -53,7 +54,7 @@ export default function Login() {
 
         const { status, user } = await handleLogin();
         
-        if (status === true) {
+        if (status) {
             router.push('/home');
             localStorage.setItem('user', JSON.stringify(user));
         }
@@ -70,11 +71,13 @@ export default function Login() {
             console.log("handling login")
             const response = await login(userData.username, userData.password);
             
-            return response;
+            if (response.status) {
+                return { status: response.status, user: response.status}
+            }
+            return { status: response.status  };
         } catch (error) {
             console.log(error)
-            
-            throw new Error("unable to perform action, server error", error);
+            return { status: false }
         }
     }
 

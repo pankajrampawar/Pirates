@@ -23,10 +23,10 @@ export default function Home() {
         const checkAndGetUserAction = async () => {
             const response = await checkAndGetUser();
                 
-            const userCopy = response.user;
-            delete userCopy.password
-
             if (response.status) {
+              const userCopy = response.user;    
+              if (userCopy) delete userCopy.password
+
               localStorage.setItem('user', JSON.stringify(userCopy))
 
               setUser(userCopy);
@@ -44,9 +44,10 @@ export default function Home() {
         };
         
         const checkUser = () => {
-            const user = JSON.parse(localStorage.getItem('user'))
-            
-            if (user) {
+            const userToParse = localStorage.getItem('user')
+            let user;
+            if(userToParse) {
+                user = JSON.parse(userToParse)
                 setUser(user);
                 getAllCraft();
                 return; 
