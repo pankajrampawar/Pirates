@@ -32,10 +32,12 @@ export default function Home() {
               setUser(userCopy);
 
               getAllCraft();
+
+              return;
             } else if (!response.status) {
                 router.push('/login');
+                return;
             }
-            
             return;
         };
         

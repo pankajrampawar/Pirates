@@ -12,10 +12,14 @@ export default function Home() {
   useEffect(() => {
     const checkAndGetUserAction = async () => {
       const response = await checkAndGetUser();
+
+      const userCopy = response.user;
+
+      delete userCopy.password;
       
       if (response.status) {
         router.push('/home')
-        localStorage.setItem('user', JSON.stringify(response.user))
+        localStorage.setItem('user', JSON.stringify(userCopy))
       }
       
       return
