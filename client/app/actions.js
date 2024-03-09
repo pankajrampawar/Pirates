@@ -6,7 +6,7 @@ import stringToTags from './lib/stringToTags';
 
 export const signup = async (user) => {
     try {
-        const response = await axios.post('http://localhost:3000/user/signup', 
+        const response = await axios.post('https://backend.whiseve.com/user/signup', 
             { user },
             {
                 withCredentials: true,
@@ -41,7 +41,7 @@ export const login = async (username, password) => {
             password: password,
         }
 
-        const response = await axios.post("http://localhost:3000/user/login", 
+        const response = await axios.post("https://backend.whiseve.com/user/login", 
             { user },
             {
                 withCredentials: true,
@@ -75,7 +75,7 @@ export const login = async (username, password) => {
 export const getDrops = async () => {
     try {
 
-        const response = await axios.get('http://localhost:3000/drop/getDrops', {
+        const response = await axios.get('https://backend.whiseve.com/drop/getDrops', {
             withCredentials: true,
         });
         
@@ -87,7 +87,7 @@ export const getDrops = async () => {
 
 export const getDrop = async (id) => {
     try {
-        const response = await axios.get('http://localhost:3000/drop/getDrop', 
+        const response = await axios.get('https://backend.whiseve.com/drop/getDrop', 
             { 
                 params: { dropId: id },
                 withCredentials: true,
@@ -103,7 +103,7 @@ export const getDrop = async (id) => {
 
 export const getReplyForDrop = async (id) => {
     try {
-        const response = await axios.get('http://localhost:3000/response/getResponses', 
+        const response = await axios.get('https://backend.whiseve.com/response/getResponses', 
         { 
             params: { dropId: id },
             withCredentials: true,
@@ -131,7 +131,7 @@ export const postAnonymousDrop = async ({ content, year, branch, tags }) => {
 
         console.log(body)
 
-        const response = await axios.post('http://localhost:3000/drop/addAnonymousDrop', 
+        const response = await axios.post('https://backend.whiseve.com/drop/addAnonymousDrop', 
             body,
             {
                 withCredentials: true
@@ -160,7 +160,7 @@ export const postDirectDrop = async ({ content, userName, branch, year, tags }) 
             body.tags = hashtags;
         }
 
-        const response = await axios.post('http://localhost:3000/drop/addDirectDrop', 
+        const response = await axios.post('https://backend.whiseve.com/drop/addDirectDrop', 
             body, 
             {
                 withCredentials: true
@@ -187,7 +187,7 @@ export const addResponse = async (dropId, response, senderId) => {
             body.senderId = senderId
         }
         
-        const result = await axios.post('http://localhost:3000/response/addResponse', 
+        const result = await axios.post('https://backend.whiseve.com/response/addResponse', 
             body,
             {
                 withCredentials: true
@@ -206,7 +206,7 @@ export const addResponse = async (dropId, response, senderId) => {
 
 export const checkAndGetUser = async () => {
     try {
-        const result = await axios.get('http://localhost:3000/user/checkStatus',
+        const result = await axios.get('https://backend.whiseve.com/user/checkStatus',
             {
                 withCredentials: true
             }
@@ -232,7 +232,7 @@ export const checkAndGetUser = async () => {
 
 export const getUser = async (userToGetId) => {
     try {
-        const response = await axios.get('http://localhost:3000/user/getUser', 
+        const response = await axios.get('https://backend.whiseve.com/user/getUser', 
             {
                 params: {userToGetId},
                 withCredentials: true,
@@ -257,7 +257,7 @@ export const likeADrop = async ( dropId ) => {
      try {
         console.log("liking the drop")
         
-        const response = await axios.post('http://localhost:3000/drop/likeDrop', 
+        const response = await axios.post('https://backend.whiseve.com/drop/likeDrop', 
             { dropId },
             {
                 withCredentials: true,
@@ -278,7 +278,7 @@ export const likeADrop = async ( dropId ) => {
 
 export const removeLikeFromDrop = async (dropId) => {
     try {
-        const response = await axios.post('http://localhost:3000/drop/removeLikeDrop', 
+        const response = await axios.post('https://backend.whiseve.com/drop/removeLikeDrop', 
             { dropId },
             {
                 withCredentials: true,
@@ -296,7 +296,7 @@ export const removeLikeFromDrop = async (dropId) => {
 export const sendFriendRequest = async (friendId) => {
     try {
         console.log(friendId);
-        const response = await axios.post('http://localhost:3000/user/friendRequest', 
+        const response = await axios.post('https://backend.whiseve.com/user/friendRequest', 
             { friendId },
             {
                 withCredentials: true,
@@ -313,7 +313,7 @@ export const sendFriendRequest = async (friendId) => {
 
 export const acceptFriendRequest = async (friendId) => {
     try {
-        const response = await axios.post('http://localhost:3000/user/acceptRequest', 
+        const response = await axios.post('https://backend.whiseve.com/user/acceptRequest', 
             { friendId },
             {
                 withCredentials: true,
@@ -331,7 +331,7 @@ export const acceptFriendRequest = async (friendId) => {
 
 export const rejectFriendRequest = async (friendId) => {
     try {
-        const response = await axios.post('http://localhost:3000/user/rejectRequest', 
+        const response = await axios.post('https://backend.whiseve.com/user/rejectRequest', 
             { friendId },
             {
                 withCredentials: true,
