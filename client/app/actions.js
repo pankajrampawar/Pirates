@@ -4,8 +4,6 @@ import { unstable_noStore as noStore } from 'next/cache';
 import { resolve } from 'styled-jsx/css';
 import stringToTags from './lib/stringToTags';
 
-
-
 export const signup = async (user) => {
     try {
         const response = await axios.post('http://localhost:3000/user/signup', 
