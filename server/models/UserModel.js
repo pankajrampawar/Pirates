@@ -23,7 +23,44 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
         enum: ["CMPN", "EXTC", "ECS", "IT", "AIDS"]
-    }
+    },
+    profilePic:{
+        type: String,    
+    },
+    slayScore:{
+        type: Number,
+        default: 0
+    },
+    status:{
+        type: String,
+        enum: ["Single","In Relationship"]
+    },
+    drops:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Drop"
+    }],
+    replies:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Response"
+    }],
+    bio:{
+        type:String,
+    },
+    wordsOfConcern:[{
+        type:String,
+    }],
+    Notification: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Notification'
+    },
+    friends:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
+    }],
+    friendsRequest:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
+    }],
 });
 
 const User = mongoose.model('User', UserSchema)

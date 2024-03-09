@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const ResponseSchema = new mongoose.Schema({
-    user: {
+    senderId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
     },
@@ -11,7 +11,7 @@ const ResponseSchema = new mongoose.Schema({
     },
     replyOf: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Craft",
+        ref: "Drop",
         required: true
     }
 })

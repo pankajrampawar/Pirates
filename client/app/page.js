@@ -12,12 +12,15 @@ export default function Home() {
   useEffect(() => {
     const checkAndGetUserAction = async () => {
       const response = await checkAndGetUser();
-
+      
+      if (!response) {
+        return;
+      }
       const userCopy = response.user;
 
-      delete userCopy.password;
+      console.log(userCopy)
       
-      if (response.status) {
+      if (response) {
         router.push('/home')
         localStorage.setItem('user', JSON.stringify(userCopy))
       }
@@ -26,7 +29,6 @@ export default function Home() {
     };
 
     checkAndGetUserAction();
-
   }, [])
 
   return (

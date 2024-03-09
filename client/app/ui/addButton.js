@@ -11,7 +11,7 @@ export default function AddButton(){
         setIsAddDropVisible(prev => !prev);
     }
     return (
-        <div className="min-w-[60px] max-w-[60px] aspect-square rounded-full flex justify-center items-center bg-white"
+        <div className="min-w-[60px] max-w-[60px] aspect-square rounded-full flex justify-center items-center bg-primary"
             onClick={showAddDrop}
         >
             <div>

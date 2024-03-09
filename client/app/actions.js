@@ -1,10 +1,14 @@
 import axios from 'axios'
 import Cookies from 'js-cookie';
+import { unstable_noStore as noStore } from 'next/cache';
+import { resolve } from 'styled-jsx/css';
+import stringToTags from './lib/stringToTags';
+
 
 
 export const signup = async (user) => {
     try {
-        const response = await axios.post('https://backend.whiseve.com/user/signup', 
+        const response = await axios.post('http://localhost:3000/user/signup', 
             { user },
             {
                 withCredentials: true,
@@ -39,7 +43,7 @@ export const login = async (username, password) => {
             password: password,
         }
 
-        const response = await axios.post("https://backend.whiseve.com/user/login", 
+        const response = await axios.post("http://localhost:3000/user/login", 
             { user },
             {
                 withCredentials: true,
@@ -70,42 +74,40 @@ export const login = async (username, password) => {
     }
 }
 
-export const getCrafts = async () => {
+export const getDrops = async () => {
     try {
 
-        const response = await axios.get('https://backend.whiseve.com/craft/getCrafts', {
+        const response = await axios.get('http://localhost:3000/drop/getDrops', {
             withCredentials: true,
         });
         
-        console.log(response.data);
-        
-        return response.data.crafts 
+        return response.data.drops
     } catch (error) {
         console.log("Error sending/ receiving the response", error);
     }
-};
+};  
 
-export const getCraft = async (id) => {
+export const getDrop = async (id) => {
     try {
-        const response = await axios.get('https://backend.whiseve.com/craft/getCraft', 
+        const response = await axios.get('http://localhost:3000/drop/getDrop', 
             { 
-                params: { craftId: id },
+                params: { dropId: id },
                 withCredentials: true,
             }, 
         )
         
         console.log(response)
-        return response.data.craft;
+        return response.data.drop;
     } catch (error) {
         console.log("Error sending/ receiving the reply", error);
     }
 }
 
-export const getReplyForCraft = async (id) => {
+export const getReplyForDrop = async (id) => {
     try {
-        const response = await axios.get('https://backend.whiseve.com/response/getResponses', 
+        const response = await axios.get('http://localhost:3000/response/getResponses', 
         { 
-            params: { craftId: id },
+            params: { dropId: id },
             withCredentials: true,
         }    
         )
@@ -116,14 +118,22 @@ export const getReplyForCraft = async (id) => {
     }
 }
 
-export const postADrop = async (drop, year, branch) => {
+export const postAnonymousDrop = async ({ content, year, branch, tags }) => {
     try {
         const body = {
-            craftToAdd: drop.craftToAdd,
-            year: year,
-            branch: branch
+            content,
+            year,
+            branch
         }
-        const response = await axios.post('https://backend.whiseve.com/craft/addCraft', 
+
+        if (tags) {
+            const hashTags = stringToTags(tags);
+            body.tags = hashTags
+        }
+
+        console.log(body)
+
+        const response = await axios.post('http://localhost:3000/drop/addAnonymousDrop', 
             body,
             {
                 withCredentials: true
@@ -138,10 +148,49 @@ export const postADrop = async (drop, year, branch) => {
     }
 }
 
-export const addResponse = async (craftId, response) => {
+export const postDirectDrop = async ({ content, userName, branch, year, tags }) => {
     try {
-        const result = await axios.post('https://backend.whiseve.com/response/addResponse', 
-            { craftId, response },
+        const body = {
+            content, 
+            userName,
+            branch,
+            year
+        }
+
+        if (tags) {
+            const hashtags = stringToTags(tags);
+            body.tags = hashtags;
+        }
+
+        const response = await axios.post('http://localhost:3000/drop/addDirectDrop', 
+            body, 
+            {
+                withCredentials: true
+            }
+        )
+
+        console.log(response);
+
+        return true;
+    } catch (error) { 
+        console.log('error sending post directly', error);
+        return false
+    }
+}
+
+export const addResponse = async (dropId, response, senderId) => {
+    try {
+        const body = {
+            dropId,
+            response,
+        }
+
+        if (senderId) {
+            body.senderId = senderId
+        }
+        
+        const result = await axios.post('http://localhost:3000/response/addResponse', 
+            body,
             {
                 withCredentials: true
             }
@@ -159,32 +208,145 @@ export const addResponse = async (craftId, response) => {
 
 export const checkAndGetUser = async () => {
     try {
-        const result = await axios.get('https://backend.whiseve.com/user/checkStatus',
+        const result = await axios.get('http://localhost:3000/user/checkStatus',
             {
                 withCredentials: true
             }
         );
         
         if (!result) {
-            return { status:false }
+            return;
         }
 
-        const userData = result.data || (result.response?.data && result.response.data);
+        const userData = result.data.user || (result.response?.data.user && result.response.data.user);
 
         if (!userData) {
-            return { satus: false }
+            return;
         }
 
-        console.log(result);
-
-        return { status: true, user: userData.user };
+        return userData;
     } catch (error) {
         console.log(error);
         
-        return { status: false }
+        return;
     }
 }
 
+export const getUser = async (userToGetId) => {
+    try {
+        const response = await axios.get('http://localhost:3000/user/getUser', 
+            {
+                params: {userToGetId},
+                withCredentials: true,
+            }
+        )
 
+        if (!response.data.user) {
+            return;
+        }
 
+        console.log(response.data.user)
 
+        return response.data.user;
+
+    } catch (error) {
+        console.log(error);
+        return;
+    }
+}
+
+export const likeADrop = async ( dropId ) => {
+     try {
+        console.log("liking the drop")
+        
+        const response = await axios.post('http://localhost:3000/drop/likeDrop', 
+            { dropId },
+            {
+                withCredentials: true,
+            }
+        )
+
+        if (!response) {
+            return;
+        }
+
+        console.log(response);
+        return response.data;
+    } catch (error) {
+        console.log(error)
+        return;
+    }
+}
+
+export const removeLikeFromDrop = async (dropId) => {
+    try {
+        const response = await axios.post('http://localhost:3000/drop/removeLikeDrop', 
+            { dropId },
+            {
+                withCredentials: true,
+            }
+        )
+
+        if (!response) return;
+        console.log(response)
+        return response.data;
+    } catch (error) {
+        return;
+    }
+}
+
+export const sendFriendRequest = async (friendId) => {
+    try {
+        console.log(friendId);
+        const response = await axios.post('http://localhost:3000/user/friendRequest', 
+            { friendId },
+            {
+                withCredentials: true,
+            }
+        )
+
+        if (!response) return;
+
+        return response.data;
+    } catch (error) {
+        return;
+    }
+}
+
+export const acceptFriendRequest = async (friendId) => {
+    try {
+        const response = await axios.post('http://localhost:3000/user/acceptRequest', 
+            { friendId },
+            {
+                withCredentials: true,
+            }
+        );
+        if (!response) {
+            return;
+        }
+
+        return response.data
+    } catch (error) {
+        return;
+    }
+}
+
+export const rejectFriendRequest = async (friendId) => {
+    try {
+        const response = await axios.post('http://localhost:3000/user/rejectRequest', 
+            { friendId },
+            {
+                withCredentials: true,
+            }
+        );
+        
+        if (!response) {
+            return;
+        }
+
+        return response.data
+    } catch (error) {
+        console.log(error)
+        return;
+    }
+}
