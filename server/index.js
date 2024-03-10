@@ -16,7 +16,7 @@ const app = express();
 app.use(bodyParser.json({ limit: '10mb' }));
 
 const corsOption = {
-    origin: ['https://whiseve.com', 'https://www.whiseve.com', 'http://localhost:3001'],
+    origin: ['https://whiseve.com', 'https://www.whiseve.com', 'http://localhost:3001', 'https://pirates-ten.vercel.app/'],
 
     credentials: true
 }
