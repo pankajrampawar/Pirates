@@ -142,7 +142,7 @@ export default function MessageCard(props) {
     return (
         <div className='flex flex-col text-lg bg-surface py-3 gap-3 px-4 my-2'>
                 <section className='flex gap-3 items-center' onClick={pushToProfile}>
-                    <div className={`flex justify-center items-center ${color[number-1]} rounded-[15px] min-h-[38px] max-h-[38px] min-w-[40px] max-w-[40px]`}>
+                    <div className={`flex justify-center items-center ${color[number-1]} rounded-[15px] min-h-[38px] max-h-[38px] min-w-[40px] max-w-[40px] overflow-clip`}>
                         {profilePic ? 
                             <img
                                 src={profilePic}
