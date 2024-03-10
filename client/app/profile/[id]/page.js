@@ -6,7 +6,7 @@ import { getUser } from '@/app/actions';
 import { useParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import { happyMonkey } from '@/app/fonts';
-import moreVert from '@/public/morevert.svg'
+import moreVert from '@/public/moreVert.svg'
 import loadingSvg from '@/public/loader.svg'
 import { sendFriendRequest } from '@/app/actions';
 import ProfileSkeleton from '@/app/ui/profile/skeletonOfProfilePage';
