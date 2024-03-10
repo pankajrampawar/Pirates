@@ -17,7 +17,7 @@ export default function HandleProfileChange() {
 
     const { handleImageChange, imgUrl, error, clearImage } = useImageHook();
     const [editorOpen, setEditorOpen] = useState(false)
-    const [loading, setLoading] = useState(false)
+    const [laoding, setLoading] = useState(false)
     const [user, setUser] = useState({
         profilePic: '',
         bio: '',
@@ -75,7 +75,6 @@ export default function HandleProfileChange() {
 
         if (!response) {
             alert('plz try again later.')
-            setLoading(false); // Reset loading state
             return;
         }
 
@@ -87,12 +86,28 @@ export default function HandleProfileChange() {
 
     const submitImageChange = async () => {
         setLoading(true);
-
+    
+        // Log initial state
+        console.log("Starting submitImageChange...");
+        console.log("Initial imgUrl:", imgUrl);
+    
         // Wait for imgUrl to be generated
-        while (!imgUrl) {
+        let timeoutCounter = 0;
+        while (!imgUrl && timeoutCounter < 50) { // Limit to 50 iterations to prevent infinite loop
+            console.log("Waiting for imgUrl...");
+            console.log("Current timeout counter:", timeoutCounter);
+            timeoutCounter++;
             await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100 milliseconds
         }
-
+    
+        console.log("Final imgUrl:", imgUrl);
+    
+        if (!imgUrl) {
+            console.log("Timeout reached. Unable to get imgUrl.");
+            setLoading(false); // Reset loading state
+            return;
+        }
+    
         const response = await changeProfilePic(imgUrl);
         
         if (!response) {
@@ -100,10 +115,10 @@ export default function HandleProfileChange() {
             setLoading(false); // Reset loading state
             return;
         }
-
+    
         localStorage.setItem('user', JSON.stringify(response));
         alert("updated");
-
+    
         setUser(prev => ({
             ...prev,
             profilePic: response.profilePic,
@@ -112,7 +127,7 @@ export default function HandleProfileChange() {
         }));
         setEditorOpen(prev => !prev)
         setLoading(false); // Reset loading state
-
+    
         return;
     }
 
@@ -132,10 +147,10 @@ export default function HandleProfileChange() {
                     onClick={() => {setEditorOpen(prev => !prev)}}
                 >
                     {/*profile Image*/}
-                    <img
+                    <im
                         src={user.profilePic}
                         alt='.'
-                        className="w-full h-full object-cover rounded-[70px]"
+                        className="w-full h-full rounded-[70px]"
                     />
                 </div>
 
@@ -179,6 +194,7 @@ export default function HandleProfileChange() {
                         closeEditor={() => {setEditorOpen(false)}}
                         handleImageChange={handleImageChange}
                         handleSubmit={submitImageChange}
+                        laoding={laoding}
                         profilePic={user.profilePic}
                     />
                     <div className="w-full h-full absolute backdrop:blur-3xl bg-black">
@@ -192,16 +208,6 @@ export default function HandleProfileChange() {
                     onClick={submitUpdateProfile}
                 >Save</button>
             </div>
-
-            {
-                loading ?
-                <div className="fixed h-screen w-screen top-0 left-0 bg-black z-40 flex justify-center items-center pl-10">
-                    <img
-                        src='/loader.svg'
-                        alt="loading"
-                    />
-                </div> : ''
-            }
         </div>
     )
 }
