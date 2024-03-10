@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import FriendRequestCard from "@/app/ui/profile/friendRequestCard"
 
-export default function Notifications () {
+export default function () {
 
     const router = useRouter();
 

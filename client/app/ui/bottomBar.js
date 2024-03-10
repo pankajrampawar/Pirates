@@ -1,14 +1,18 @@
 'use client'
 
-import React from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function BottomBar() {
 
-    const userDetails = localStorage.getItem('user');
+    const [user, setUser] = useState('');
 
-    const user = JSON.parse(userDetails);
+    useEffect(() => {
+        const userDetails = localStorage.getItem('user');
+        const userObject = JSON.parse(userDetails);
+        setUser(userObject);
+    }, [])
 
     return (
         <div className='flex items-center p-2 bg-black border-t border-gray-600 text-xs'>

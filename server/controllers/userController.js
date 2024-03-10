@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt')
 const UserModel = require('../models/UserModel');
+const cloudinary=require('cloudinary').v2;
+
 const { generateAccessToken, generateRefreshToken } = require('../utils/tokenUtils');
 
 exports.createNewUser = async (req, res) => {
@@ -251,5 +253,61 @@ exports.getUserProfile = async (req, res) => {
         console.log("error in getUser", error);
         res.status(500).json({ message: "internal server error", error });
         return;
+    }
+}
+
+exports.updateUserProfilePic = async (req, res) => {
+    try {
+        const userId = req.userId;
+        const { profilePic } = req.body;
+        
+        const user = await UserModel.findById(userId);
+        
+        const uploadedResponse=await cloudinary.uploader.upload(profilePic);
+
+
+        if (!user) {
+            return res.status(404).json({ message: "user not found" });
+        }
+
+        user.profilePic = uploadedResponse.secure_url;
+
+        await user.save();
+
+        const userCopy = user.toObject();
+        delete userCopy.password;
+
+        return res.status(200).json({ message: "user updated successfully", user:userCopy});
+    } catch (error) {
+        console.log("error in update user", error);
+        return res.status(500).json({ message: "internal server error", error });
+    }
+}
+
+exports.updateProfile = async (req, res) => {
+    try {
+        const { bio, status } = req.body
+
+        const userId = req.userId
+
+        if (!bio && !status) {
+            return res.status(404).json({ message: "bio or status not found"});
+        }
+
+        const user = await UserModel.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({ message: 'user not found'});
+        }
+
+        user.bio = bio,
+        user.status = status,
+
+        await user.save();
+
+        return res.status(200).json({ user })
+    } catch (error) {   
+        console.log(error)
+        return res.status(500).json({ message: 'internal server error' })
     }
 }
