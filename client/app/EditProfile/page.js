@@ -75,6 +75,7 @@ export default function HandleProfileChange() {
 
         if (!response) {
             alert('plz try again later.')
+            setLoading(false); // Reset loading state
             return;
         }
 
@@ -86,10 +87,17 @@ export default function HandleProfileChange() {
 
     const submitImageChange = async () => {
         setLoading(true);
+
+        // Wait for imgUrl to be generated
+        while (!imgUrl) {
+            await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100 milliseconds
+        }
+
         const response = await changeProfilePic(imgUrl);
         
         if (!response) {
             alert("try uploading a smaller size Image");
+            setLoading(false); // Reset loading state
             return;
         }
 
@@ -103,7 +111,7 @@ export default function HandleProfileChange() {
             relationshipStatus: response.relationshipStatus
         }));
         setEditorOpen(prev => !prev)
-        setLoading(false);
+        setLoading(false); // Reset loading state
 
         return;
     }
@@ -191,7 +199,6 @@ export default function HandleProfileChange() {
                     <img
                         src='/loader.svg'
                         alt="loading"
-
                     />
                 </div> : ''
             }
