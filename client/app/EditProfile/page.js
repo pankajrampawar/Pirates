@@ -75,6 +75,7 @@ export default function HandleProfileChange() {
 
         if (!response) {
             alert('plz try again later.')
+            setLoading(false); // Reset loading state
             return;
         }
 
@@ -83,7 +84,6 @@ export default function HandleProfileChange() {
         alert('changes saved successfully')
         return;
     }
-
     const submitImageChange = async () => {
         setLoading(true);
     
@@ -147,10 +147,10 @@ export default function HandleProfileChange() {
                     onClick={() => {setEditorOpen(prev => !prev)}}
                 >
                     {/*profile Image*/}
-                    <im
+                    <img
                         src={user.profilePic}
                         alt='.'
-                        className="w-full h-full rounded-[70px]"
+                        className="w-full h-full object-cover rounded-[70px]"
                     />
                 </div>
 
@@ -194,7 +194,6 @@ export default function HandleProfileChange() {
                         closeEditor={() => {setEditorOpen(false)}}
                         handleImageChange={handleImageChange}
                         handleSubmit={submitImageChange}
-                        loading={loading}
                         profilePic={user.profilePic}
                     />
                     <div className="w-full h-full absolute backdrop:blur-3xl bg-black">
@@ -210,7 +209,7 @@ export default function HandleProfileChange() {
             </div>
 
             {
-                loading ? 
+                loading ?
                 <div className="fixed h-screen w-screen top-0 left-0 bg-black z-40 flex justify-center items-center pl-10">
                     <img
                         src='/loader.svg'
