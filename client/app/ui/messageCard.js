@@ -147,7 +147,7 @@ export default function MessageCard(props) {
                             <img
                                 src={profilePic}
                                 alt='.'
-                                className='rounded-[15px]'
+                                className='rounded-[15px] h-full w-full object-cover'
                             />
                         :
                         <Image
