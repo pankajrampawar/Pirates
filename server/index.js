@@ -13,7 +13,7 @@ const port = 3000
 dotenv.config();
 
 const app = express();
-app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.json({ limit: '50mb' }));
 
 const corsOption = {
     origin: ['https://whiseve.com', 'https://www.whiseve.com', 'http://localhost:3001', 'https://pirates-ten.vercel.app'],
