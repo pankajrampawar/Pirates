@@ -17,7 +17,7 @@ export default function HandleProfileChange() {
 
     const { handleImageChange, imgUrl, error, clearImage } = useImageHook();
     const [editorOpen, setEditorOpen] = useState(false)
-    const [laoding, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [user, setUser] = useState({
         profilePic: '',
         bio: '',
@@ -194,7 +194,7 @@ export default function HandleProfileChange() {
                         closeEditor={() => {setEditorOpen(false)}}
                         handleImageChange={handleImageChange}
                         handleSubmit={submitImageChange}
-                        laoding={laoding}
+                        loading={loading}
                         profilePic={user.profilePic}
                     />
                     <div className="w-full h-full absolute backdrop:blur-3xl bg-black">
@@ -208,6 +208,16 @@ export default function HandleProfileChange() {
                     onClick={submitUpdateProfile}
                 >Save</button>
             </div>
+
+            {
+                loading ? 
+                <div className="fixed h-screen w-screen top-0 left-0 bg-black z-40 flex justify-center items-center pl-10">
+                    <img
+                        src='/loader.svg'
+                        alt="loading"
+                    />
+                </div> : ''
+            }
         </div>
     )
 }
