@@ -76,8 +76,6 @@ export default function PageOne() {
                     >
                         <option value="" style={{color: '#718096'}} disabled selected>College</option>
                         <option value="VESIT">VESIT</option>
-                        <option value="SPIT">SPIT</option>
-                        <option value="NMIMS">NMIMS</option>
                     </select>
                 </div>
 
@@ -122,6 +120,8 @@ export default function PageOne() {
                         <option value="EXTC">EXTC</option>
                         <option value="AIDS">AIDS</option>
                         <option value="ECS">ECS</option>
+                        <option value="IT">IT</option>
+                        <option value="AURO">AURO</option>
                     </select>
                 </div>
             </section>

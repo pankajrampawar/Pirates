@@ -56,7 +56,7 @@ export default function Login() {
         }
         
         if (!status) {
-            alert("icorrect credentials")
+            alert("incorrect credentials")
         }
 
         return;
@@ -94,7 +94,7 @@ export default function Login() {
                         className='invert'
                     />
                     <input
-                        placeholder='username'
+                        placeholder='Your name'
                         type='text'
                         id='username'
                         value={userData.username}

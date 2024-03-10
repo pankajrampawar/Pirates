@@ -77,7 +77,7 @@ export default function PageTwo() {
             return;
         } 
         
-        alert('not allowed for you :/ (jk, plz try again later), have a great day :)');
+        alert('not allowed for you (jk, plz try again later), have a great day :)');
         
         return;
     }
@@ -98,7 +98,7 @@ export default function PageTwo() {
                         className='invert' 
                     />
                     <input 
-                        placeholder='username'
+                        placeholder='your name'
                         type='text'
                         id='username'
                         value={userData.username}

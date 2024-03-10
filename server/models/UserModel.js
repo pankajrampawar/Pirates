@@ -22,7 +22,7 @@ const UserSchema = new mongoose.Schema({
     branch: {
         type: String,
         required: true,
-        enum: ["CMPN", "EXTC", "ECS", "IT", "AIDS"]
+        enum: ["CMPN", "EXTC", "ECS", "IT", "AIDS", "AURO"]
     },
     profilePic:{
         type: String,    
