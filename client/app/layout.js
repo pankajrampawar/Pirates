@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 import { Keania_One, Happy_Monkey } from "next/font/google";
 
 export const keaniaOne = Keania_One({
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
       <body className={`h-full ${happyMonkey.className} ${keaniaOne.className}  bg-black text-white`}>
         {children}
         <SpeedInsights/>
+        <Analytics />
         </body>
     </html>
   );
