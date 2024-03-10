@@ -6,7 +6,7 @@ import { getUser } from '@/app/actions';
 import { useParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import { happyMonkey } from '@/app/fonts';
-import moreVert from '@/public/moreVert.svg'
+import moreVert from '@/public/morevert.svg'
 import loadingSvg from '@/public/loader.svg'
 import { sendFriendRequest } from '@/app/actions';
 import ProfileSkeleton from '@/app/ui/profile/skeletonOfProfilePage';
@@ -94,11 +94,11 @@ export default function UserProfile() {
         {!loading && <div>
             <div className='bg-surface'>
                 <div className='flex gap-3 items-start px-5 pt-2'>
-                    <div className='min-w-[58px] min-h-[58px] min-[375px]:min-w-[62px] bg-primary2 min-[375px]:min-h-[62px] rounded-xl flex justify-center items-center'>
+                    <div className='max-w-[52px] min-w-[52px] max-h-[52px] min-h-[52px] bg-primary2 bg-primaryrounded-xl overflow-hidden flex justify-center items-center rounded-xl'>
                         {userSeen && <img
                             src={userSeen.profilePic}
                             alt='.'
-                            className='max-w-[58px] max-h-[58px] min-[375px]:max-w-[62px] min-[375px]:max-h-[62px] rounded-xl'
+                            className='h-full w-full rounded-xl'
                         />}
                     </div>
 

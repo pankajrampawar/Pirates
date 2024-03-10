@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function EditorCard({ handleSubmit, handleImageChange, closeEditor, loading, profilePic }) {
+export default function EditorCard({ handleSubmit, handleImageChange, closeEditor, profilePic }) {
     const [imagePreview, setImagePreview] = useState(profilePic);
 
     const handleChange = (event) => {
@@ -23,7 +23,7 @@ export default function EditorCard({ handleSubmit, handleImageChange, closeEdito
                 {imagePreview ? (
                     <img src={imagePreview} alt="Preview" className="w-full h-full object-cover rounded-[100px]" />
                 ) : (
-                    <img src="placeholder-image.png" alt="img" className="w-full h-full object-cover rounded-[100px]" />
+                    <img src="" alt="img" className="w-full h-full object-cover rounded-[100px]" />
                 )}
             </div>
             <div>
