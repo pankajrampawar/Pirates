@@ -39,13 +39,6 @@ export default function EditorCard({ handleSubmit, handleImageChange, closeEdito
                     </div>
                 </div>
             </div>
-
-            {
-                loading && 
-                <div className="fixed h-screen w-screen bg-black opacity-80 text-center flex justify-center items-center">
-                    Loading...
-                </div>
-            }
         </div>
     );
 }
