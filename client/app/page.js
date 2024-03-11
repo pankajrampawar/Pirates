@@ -40,12 +40,12 @@ export default function Home() {
       <section className={`${happyMonkey.className} tracking-wider text-center text-[20px]`}>
         <article className="flex flex-col gap-7">
          <p>
-          This website was directly crafted by GODS*, it is a doorway to 
+          Hey we are bunch of folks from VESIT wanting to make college life
           <span> </span> 
-          <span className="underline underline-offset-8 decoration-red-500">unfiltered Community</span>
+          <span className="underline underline-offset-8 decoration-red-500">more fun</span>
          </p>
           <p>
-            Enter at your own risk...
+            SignUp and thank us later, enjoy your stay...
           </p>
         </article>   
       </section>
