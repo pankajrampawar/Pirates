@@ -286,7 +286,7 @@ exports.updateUserProfilePic = async (req, res) => {
 
 exports.updateProfile = async (req, res) => {
     try {
-        const { bio, status } = req.body
+        const { bio, status, userName } = req.body
 
         const userId = req.userId
 
@@ -300,8 +300,9 @@ exports.updateProfile = async (req, res) => {
             return res.status(404).json({ message: 'user not found'});
         }
 
-        user.bio = bio,
-        user.status = status,
+        user.bio = bio;
+        user.status = status;
+        user.userName = userName;
 
         await user.save();
 

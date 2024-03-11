@@ -22,6 +22,7 @@ export default function HandleProfileChange() {
         profilePic: '',
         bio: '',
         status: '',
+        userName: '',
     })
     const [active, setActive] = useState(false)
 
@@ -49,6 +50,15 @@ export default function HandleProfileChange() {
         return;
     }
 
+    const handleUserNameChange = (e) => {
+        const userName = e.target.value;
+        setActive(true)
+        setUser((prev) => ({
+            ...prev,
+            userName: userName,
+        }))
+    }
+
     useEffect(() => {
         const userDetailsString = localStorage.getItem('user');
         if (!userDetailsString) {
@@ -71,7 +81,7 @@ export default function HandleProfileChange() {
     const submitUpdateProfile = async () => {
         setLoading(true);
 
-        const response = await updateProfile({ bio: user.bio, status: user.status });
+        const response = await updateProfile({ bio: user.bio, status: user.status, userName: user.userName });
 
         if (!response) {
             alert('plz try again later.')
@@ -155,6 +165,13 @@ export default function HandleProfileChange() {
                 </div>
 
                 <div className={`w-full text-2xl ${happyMonkey.className} flex flex-col gap-8 px-4 max-w-[400px]`}>
+                    <div>
+                        <input
+                            placeholder="Your name"
+                            value={user.userName}
+                            onChange={handleUserNameChange}
+                        />
+                    </div>
                     <div className="flex flex-col gap-2">
                         <div>
                             Bio

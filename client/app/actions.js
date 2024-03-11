@@ -348,10 +348,10 @@ export const changeProfilePic = async (imageData) => {
     }
 }
 
-export const updateProfile = async ({ bio, status }) => {
+export const updateProfile = async ({ bio, status, userName }) => {
     try {
         const response = await axios.post('https://backend.whiseve.com/user/updateProfile', {
-             bio, status
+             bio, status, userName
         }, {
             withCredentials: true
         })
