@@ -170,6 +170,7 @@ export default function HandleProfileChange() {
                             placeholder="Your name"
                             value={user.userName}
                             onChange={handleUserNameChange}
+                            className={`bg-black focus:outline-none ${happyMonkey.className} text-xl p-1 pb-2 border-b`}
                         />
                     </div>
                     <div className="flex flex-col gap-2">
