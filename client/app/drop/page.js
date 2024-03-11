@@ -144,7 +144,7 @@ export default function DropPage() {
                     />
 
                     <input
-                        placeholder="#tags (#crush, #utsav, #..)"
+                        placeholder="tags (crush, utsav, exam..)"
                         className="bg-black pb-1 border-b-[0.1px] pl-1 focus:outline-none"
                         value={tags}
                         onChange={handleTagChange}
