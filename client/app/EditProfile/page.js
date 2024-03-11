@@ -70,7 +70,8 @@ export default function HandleProfileChange() {
             ...prev,
             profilePic: userDetailsObject.profilePic,
             bio: userDetailsObject.bio,
-            status: userDetailsObject.status
+            status: userDetailsObject.status,
+            userName: userDetailsObject.userName
         }))
     }, [])
 
