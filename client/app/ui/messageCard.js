@@ -22,6 +22,7 @@ export default function MessageCard(props) {
     const [response, setResponse] = useState('');
     const [profilePic, setProfilePic] = useState('')
     const [reply, setReply] = useState(props.replies);
+    const [loading, setLoading] = useState(false)
 
     const [likes, setLikes] = useState({
         isLiked: false,
@@ -80,10 +81,16 @@ export default function MessageCard(props) {
 
     const handleClick = async () => {
 
+        if (loading) {
+            return;
+        }
+
         if (!response) {
             alert("type something to reply, dumbass!");
             return;
         }
+
+        setLoading(true);
 
         const result = await addResponse(props.id, response);
         
@@ -91,11 +98,16 @@ export default function MessageCard(props) {
             setReply(prev => prev+1);
             alert("response sent");
             setResponse('')
+            setActive(false)
+            setLoading(false);
             return;
         }
 
         if (!result) {
             alert("unable to spend reply, it's your net..");
+            setResponse('')
+            setActive(false)
+            setLoading(false);
             return;
         }
     }
@@ -199,7 +211,12 @@ export default function MessageCard(props) {
                         className={`text-black py-1 px-2 rounded-lg text-sm  ${active ? 'bg-white font-bold' : 'bg-gray-200 font-medium'}`}
                         onClick={handleClick}
                     >
-                        send
+                        { loading ? 
+                            <img 
+                                src='/loading.svg'
+                                placeholder="Loading..."
+                            />
+                        : "send" }
                     </button>
                 </div>
 

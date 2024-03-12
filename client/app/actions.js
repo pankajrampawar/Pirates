@@ -1,7 +1,5 @@
 import axios from 'axios'
 import Cookies from 'js-cookie';
-import { unstable_noStore as noStore } from 'next/cache';
-import { resolve } from 'styled-jsx/css';
 import stringToTags from './lib/stringToTags';
 
 
