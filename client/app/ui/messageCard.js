@@ -213,7 +213,7 @@ export default function MessageCard(props) {
                     >
                         { loading ? 
                             <img 
-                                src='../loading.svg'
+                                src='../loader.svg'
                                 placeholder="Loading..."
                             />
                         : "send" }
