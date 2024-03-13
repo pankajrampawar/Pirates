@@ -67,18 +67,14 @@ export default function PageTwo() {
 
         const response = await signup(userData);
 
-        if (response.status) {
-            if (response.user) {
-                const userCopy = response.user;
-                delete userCopy.password;
-                localStorage.setItem('user', JSON.stringify(userCopy))
-            }
-            router.push('/home');
-            return;
-        } 
-        
-        alert('not allowed for you (jk, plz try again later), have a great day :)');
-        
+        if (!response) {
+            alert('not allowed for you (jk, plz try again later), have a great day :)');
+            return;    
+        }
+
+        localStorage.setItem(JSON.stringify(response));
+        alert("Prepare to be grilled, toasted, and roasted – 🔥🍞🔥 we spare no one here! 😄");
+        router.push('/home')
         return;
     }
 

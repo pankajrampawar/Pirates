@@ -23,14 +23,12 @@ export const signup = async (user) => {
             });
          }
         
-        console.log(response);
 
-        if (response) return { status: true, user: response.user }
+        if (response.user) return response.user;
 
     } catch (error) {
         console.log("error in signup, please try again later!", error);
-
-        return { status: false };
+        return;
     }
 }
 
